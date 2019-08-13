@@ -1,3 +1,5 @@
+Create DATABASE Sistema_estudios 
+
 Create Table USUARIO(
 
 	id_usuario int primary key,
@@ -32,7 +34,7 @@ Create Table ASIGNACION(
 Create Table TAREA(
 	
 	id_tarea int primary key,
-	--campos para preguntas o algo asi
+	Enunciado varchar (20) not null,
 	Entrega datetime not null,
 	curso int not null,	
 	foreign key(curso) references CURSO(id_curso)
@@ -53,7 +55,8 @@ Create Table NOTA_TAREA(
 Create Table EXAMEN(
 	
 	id_examen int primary key,
-	--campos para preguntas o algo asi
+	--un varchar enorme en donde se separan las preguntas por medio de 2 puntos y comas ;;
+	preguntas varchar(max),
 	Fecha datetime not null,
 	curso int not null,	
 	foreign key(curso) references CURSO(id_curso)
