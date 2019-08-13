@@ -58,6 +58,7 @@ Create Table EXAMEN(
 	--un varchar enorme en donde se separan las preguntas por medio de 2 puntos y comas ;;
 	preguntas varchar(max),
 	Fecha datetime not null,
+	minutos int not null,
 	curso int not null,	
 	foreign key(curso) references CURSO(id_curso)
 	
