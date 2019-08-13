@@ -5,6 +5,7 @@ Use Sistema_estudios;
 Create Table USUARIO(
 
 	id_usuario int identity primary key,
+	nick varchar(20) not null unique,
 	nombre_1 varchar(20) not null,
 	nombre_2 varchar(20),
 	apellido_1 varchar(20),
