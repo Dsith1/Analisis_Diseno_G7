@@ -1,4 +1,4 @@
-Create DATABASE Sistema_estudios 
+Create DATABASE Sistema_estudios;
 
 Create Table USUARIO(
 
@@ -17,7 +17,7 @@ Create Table CURSO(
 	id_curso int primary key,
 	nombre varchar(20) not null,
 	creador int not null,
-	foreign key(creador) references USUARIO(id_usuario);
+	foreign key(creador) references USUARIO(id_usuario)
 	
 );
 
