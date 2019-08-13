@@ -1,4 +1,6 @@
 Create DATABASE Sistema_estudios;
+Use Sistema_estudios;
+
 
 Create Table USUARIO(
 
@@ -48,7 +50,7 @@ Create Table NOTA_TAREA(
 	nota int not null default 0,
 	primary key(estudiante,tarea),
 	foreign key(tarea) references TAREA(id_tarea),
-	foreign key(estudiante) references USUARIO(estudiante)
+	foreign key(estudiante) references USUARIO(id_usuario)
 
 )
 
@@ -69,8 +71,8 @@ Create Table NOTA_EXAMEN(
 	estudiante int,
 	examen int,
 	nota int not null default 0,
-	primary key(estudiante,tarea),
+	primary key(estudiante,examen),
 	foreign key(examen) references EXAMEN(id_examen),
-	foreign key(estudiante) references USUARIO(estudiante)
+	foreign key(estudiante) references USUARIO(id_usuario)
 
 )
