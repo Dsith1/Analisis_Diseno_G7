@@ -39,13 +39,34 @@ Create Table TAREA(
 	
 );
 
-Create Table Nota_Tarea(
+Create Table NOTA_TAREA(
 	
 	estudiante int,
 	tarea int,
 	nota int not null default 0,
 	primary key(estudiante,tarea),
 	foreign key(tarea) references TAREA(id_tarea),
+	foreign key(estudiante) references USUARIO(estudiante)
+
+)
+
+Create Table EXAMEN(
+	
+	id_examen int primary key,
+	--campos para preguntas o algo asi
+	Fecha datetime not null,
+	curso int not null,	
+	foreign key(curso) references CURSO(id_curso)
+	
+);
+
+Create Table NOTA_EXAMEN(
+	
+	estudiante int,
+	examen int,
+	nota int not null default 0,
+	primary key(estudiante,tarea),
+	foreign key(examen) references EXAMEN(id_examen),
 	foreign key(estudiante) references USUARIO(estudiante)
 
 )
