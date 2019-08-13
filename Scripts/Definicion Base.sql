@@ -4,7 +4,7 @@ Use Sistema_estudios;
 
 Create Table USUARIO(
 
-	id_usuario int primary key,
+	id_usuario int identity primary key,
 	nombre_1 varchar(20) not null,
 	nombre_2 varchar(20),
 	apellido_1 varchar(20),
@@ -16,7 +16,7 @@ Create Table USUARIO(
 
 Create Table CURSO(
 
-	id_curso int primary key,
+	id_curso int identity primary key,
 	nombre varchar(20) not null,
 	creador int not null,
 	foreign key(creador) references USUARIO(id_usuario)
@@ -35,7 +35,7 @@ Create Table ASIGNACION(
 
 Create Table TAREA(
 	
-	id_tarea int primary key,
+	id_tarea int identity primary key,
 	Enunciado varchar (20) not null,
 	Entrega datetime not null,
 	curso int not null,	
@@ -56,7 +56,7 @@ Create Table NOTA_TAREA(
 
 Create Table EXAMEN(
 	
-	id_examen int primary key,
+	id_examen int identity primary key,
 	--un varchar enorme en donde se separan las preguntas por medio de 2 puntos y comas ;;
 	preguntas varchar(max),
 	Fecha datetime not null,
