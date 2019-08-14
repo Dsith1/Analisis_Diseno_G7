@@ -4,7 +4,16 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Sistema_estudiosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Sistema_estudiosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ACTIVIDAD">
+          <Key>
+            <PropertyRef Name="id_Actividad" />
+          </Key>
+          <Property Name="id_Actividad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipo" Type="int" Nullable="false" />
+          <Property Name="id_evento" Type="int" Nullable="false" />
+          <Property Name="curso" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="ASIGNACION">
           <Key>
             <PropertyRef Name="id_curso" />
@@ -12,6 +21,15 @@
           </Key>
           <Property Name="id_curso" Type="int" Nullable="false" />
           <Property Name="id_usuario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="COMENTARIO">
+          <Key>
+            <PropertyRef Name="id_Comentario" />
+          </Key>
+          <Property Name="id_Comentario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="info" Type="varchar(max)" />
+          <Property Name="curso" Type="int" Nullable="false" />
+          <Property Name="estudiante" Type="int" />
         </EntityType>
         <EntityType Name="CURSO">
           <Key>
@@ -49,6 +67,14 @@
           <Property Name="tarea" Type="int" Nullable="false" />
           <Property Name="nota" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="PUBLICACION">
+          <Key>
+            <PropertyRef Name="id_publicacon" />
+          </Key>
+          <Property Name="id_publicacon" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="info" Type="varchar(max)" />
+          <Property Name="curso" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="TAREA">
           <Key>
             <PropertyRef Name="id_tarea" />
@@ -72,6 +98,18 @@
           <Property Name="edad" Type="int" Nullable="false" />
           <Property Name="correo" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
+        <Association Name="FK__ACTIVIDAD__curso__5DCAEF64">
+          <End Role="CURSO" Type="Self.CURSO" Multiplicity="1" />
+          <End Role="ACTIVIDAD" Type="Self.ACTIVIDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CURSO">
+              <PropertyRef Name="id_curso" />
+            </Principal>
+            <Dependent Role="ACTIVIDAD">
+              <PropertyRef Name="curso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__ASIGNACIO__id_cu__3D5E1FD2">
           <End Role="CURSO" Type="Self.CURSO" Multiplicity="1" />
           <End Role="ASIGNACION" Type="Self.ASIGNACION" Multiplicity="*" />
@@ -93,6 +131,30 @@
             </Principal>
             <Dependent Role="ASIGNACION">
               <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__COMENTARI__curso__6383C8BA">
+          <End Role="CURSO" Type="Self.CURSO" Multiplicity="1" />
+          <End Role="COMENTARIO" Type="Self.COMENTARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CURSO">
+              <PropertyRef Name="id_curso" />
+            </Principal>
+            <Dependent Role="COMENTARIO">
+              <PropertyRef Name="curso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__COMENTARI__estud__6477ECF3">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+          <End Role="COMENTARIO" Type="Self.COMENTARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="COMENTARIO">
+              <PropertyRef Name="estudiante" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -168,6 +230,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__PUBLICACI__curso__60A75C0F">
+          <End Role="CURSO" Type="Self.CURSO" Multiplicity="1" />
+          <End Role="PUBLICACION" Type="Self.PUBLICACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CURSO">
+              <PropertyRef Name="id_curso" />
+            </Principal>
+            <Dependent Role="PUBLICACION">
+              <PropertyRef Name="curso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__TAREA__curso__412EB0B6">
           <End Role="CURSO" Type="Self.CURSO" Multiplicity="1" />
           <End Role="TAREA" Type="Self.TAREA" Multiplicity="*" />
@@ -192,13 +266,20 @@
           <Parameter Name="Nuevo_correo" Type="varchar" Mode="In" />
         </Function>
         <EntityContainer Name="Sistema_estudiosModelStoreContainer">
+          <EntitySet Name="ACTIVIDAD" EntityType="Self.ACTIVIDAD" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ASIGNACION" EntityType="Self.ASIGNACION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COMENTARIO" EntityType="Self.COMENTARIO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CURSO" EntityType="Self.CURSO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EXAMEN" EntityType="Self.EXAMEN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NOTA_EXAMEN" EntityType="Self.NOTA_EXAMEN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NOTA_TAREA" EntityType="Self.NOTA_TAREA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PUBLICACION" EntityType="Self.PUBLICACION" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TAREA" EntityType="Self.TAREA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__ACTIVIDAD__curso__5DCAEF64" Association="Self.FK__ACTIVIDAD__curso__5DCAEF64">
+            <End Role="CURSO" EntitySet="CURSO" />
+            <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
+          </AssociationSet>
           <AssociationSet Name="FK__ASIGNACIO__id_cu__3D5E1FD2" Association="Self.FK__ASIGNACIO__id_cu__3D5E1FD2">
             <End Role="CURSO" EntitySet="CURSO" />
             <End Role="ASIGNACION" EntitySet="ASIGNACION" />
@@ -206,6 +287,14 @@
           <AssociationSet Name="FK__ASIGNACIO__id_us__3E52440B" Association="Self.FK__ASIGNACIO__id_us__3E52440B">
             <End Role="USUARIO" EntitySet="USUARIO" />
             <End Role="ASIGNACION" EntitySet="ASIGNACION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__COMENTARI__curso__6383C8BA" Association="Self.FK__COMENTARI__curso__6383C8BA">
+            <End Role="CURSO" EntitySet="CURSO" />
+            <End Role="COMENTARIO" EntitySet="COMENTARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__COMENTARI__estud__6477ECF3" Association="Self.FK__COMENTARI__estud__6477ECF3">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="COMENTARIO" EntitySet="COMENTARIO" />
           </AssociationSet>
           <AssociationSet Name="FK__CURSO__creador__3A81B327" Association="Self.FK__CURSO__creador__3A81B327">
             <End Role="USUARIO" EntitySet="USUARIO" />
@@ -231,13 +320,16 @@
             <End Role="TAREA" EntitySet="TAREA" />
             <End Role="NOTA_TAREA" EntitySet="NOTA_TAREA" />
           </AssociationSet>
+          <AssociationSet Name="FK__PUBLICACI__curso__60A75C0F" Association="Self.FK__PUBLICACI__curso__60A75C0F">
+            <End Role="CURSO" EntitySet="CURSO" />
+            <End Role="PUBLICACION" EntitySet="PUBLICACION" />
+          </AssociationSet>
           <AssociationSet Name="FK__TAREA__curso__412EB0B6" Association="Self.FK__TAREA__curso__412EB0B6">
             <End Role="CURSO" EntitySet="CURSO" />
             <End Role="TAREA" EntitySet="TAREA" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Sistema_estudiosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -252,6 +344,9 @@
           <NavigationProperty Name="EXAMEN" Relationship="Self.FK__EXAMEN__curso__48CFD27E" FromRole="CURSO" ToRole="EXAMEN" />
           <NavigationProperty Name="TAREAs" Relationship="Self.FK__TAREA__curso__412EB0B6" FromRole="CURSO" ToRole="TAREA" />
           <NavigationProperty Name="USUARIOs" Relationship="Self.ASIGNACION" FromRole="CURSO" ToRole="USUARIO" />
+          <NavigationProperty Name="ACTIVIDADs" Relationship="Sistema_estudiosModel.FK__ACTIVIDAD__curso__5DCAEF64" FromRole="CURSO" ToRole="ACTIVIDAD" />
+          <NavigationProperty Name="COMENTARIOs" Relationship="Sistema_estudiosModel.FK__COMENTARI__curso__6383C8BA" FromRole="CURSO" ToRole="COMENTARIO" />
+          <NavigationProperty Name="PUBLICACIONs" Relationship="Sistema_estudiosModel.FK__PUBLICACI__curso__60A75C0F" FromRole="CURSO" ToRole="PUBLICACION" />
         </EntityType>
         <EntityType Name="EXAMan">
           <Key>
@@ -315,6 +410,7 @@
           <NavigationProperty Name="NOTA_EXAMEN" Relationship="Self.FK__NOTA_EXAM__estud__4D94879B" FromRole="USUARIO" ToRole="NOTA_EXAMEN" />
           <NavigationProperty Name="NOTA_TAREA" Relationship="Self.FK__NOTA_TARE__estud__45F365D3" FromRole="USUARIO" ToRole="NOTA_TAREA" />
           <NavigationProperty Name="CURSOes1" Relationship="Self.ASIGNACION" FromRole="USUARIO" ToRole="CURSO" />
+          <NavigationProperty Name="COMENTARIOs" Relationship="Sistema_estudiosModel.FK__COMENTARI__estud__6477ECF3" FromRole="USUARIO" ToRole="COMENTARIO" />
         </EntityType>
         <Association Name="FK__CURSO__creador__3A81B327">
           <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
@@ -454,7 +550,104 @@
             <Parameter Name="Nuevo_edad" Mode="In" Type="Int32" />
             <Parameter Name="Nuevo_correo" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="ACTIVIDADs" EntityType="Sistema_estudiosModel.ACTIVIDAD" />
+          <EntitySet Name="COMENTARIOs" EntityType="Sistema_estudiosModel.COMENTARIO" />
+          <EntitySet Name="PUBLICACIONs" EntityType="Sistema_estudiosModel.PUBLICACION" />
+          <AssociationSet Name="FK__ACTIVIDAD__curso__5DCAEF64" Association="Sistema_estudiosModel.FK__ACTIVIDAD__curso__5DCAEF64">
+            <End Role="CURSO" EntitySet="CURSOes" />
+            <End Role="ACTIVIDAD" EntitySet="ACTIVIDADs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__COMENTARI__curso__6383C8BA" Association="Sistema_estudiosModel.FK__COMENTARI__curso__6383C8BA">
+            <End Role="CURSO" EntitySet="CURSOes" />
+            <End Role="COMENTARIO" EntitySet="COMENTARIOs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__COMENTARI__estud__6477ECF3" Association="Sistema_estudiosModel.FK__COMENTARI__estud__6477ECF3">
+            <End Role="USUARIO" EntitySet="USUARIOs" />
+            <End Role="COMENTARIO" EntitySet="COMENTARIOs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PUBLICACI__curso__60A75C0F" Association="Sistema_estudiosModel.FK__PUBLICACI__curso__60A75C0F">
+            <End Role="CURSO" EntitySet="CURSOes" />
+            <End Role="PUBLICACION" EntitySet="PUBLICACIONs" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="ACTIVIDAD">
+          <Key>
+            <PropertyRef Name="id_Actividad" />
+          </Key>
+          <Property Name="id_Actividad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipo" Type="Int32" Nullable="false" />
+          <Property Name="id_evento" Type="Int32" Nullable="false" />
+          <Property Name="curso" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CURSO1" Relationship="Sistema_estudiosModel.FK__ACTIVIDAD__curso__5DCAEF64" FromRole="ACTIVIDAD" ToRole="CURSO" />
+        </EntityType>
+        <EntityType Name="COMENTARIO">
+          <Key>
+            <PropertyRef Name="id_Comentario" />
+          </Key>
+          <Property Name="id_Comentario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="info" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="curso" Type="Int32" Nullable="false" />
+          <Property Name="estudiante" Type="Int32" />
+          <NavigationProperty Name="CURSO1" Relationship="Sistema_estudiosModel.FK__COMENTARI__curso__6383C8BA" FromRole="COMENTARIO" ToRole="CURSO" />
+          <NavigationProperty Name="USUARIO" Relationship="Sistema_estudiosModel.FK__COMENTARI__estud__6477ECF3" FromRole="COMENTARIO" ToRole="USUARIO" />
+        </EntityType>
+        <EntityType Name="PUBLICACION">
+          <Key>
+            <PropertyRef Name="id_publicacon" />
+          </Key>
+          <Property Name="id_publicacon" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="info" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="curso" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CURSO1" Relationship="Sistema_estudiosModel.FK__PUBLICACI__curso__60A75C0F" FromRole="PUBLICACION" ToRole="CURSO" />
+        </EntityType>
+        <Association Name="FK__ACTIVIDAD__curso__5DCAEF64">
+          <End Type="Sistema_estudiosModel.CURSO" Role="CURSO" Multiplicity="1" />
+          <End Type="Sistema_estudiosModel.ACTIVIDAD" Role="ACTIVIDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CURSO">
+              <PropertyRef Name="id_curso" />
+            </Principal>
+            <Dependent Role="ACTIVIDAD">
+              <PropertyRef Name="curso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__COMENTARI__curso__6383C8BA">
+          <End Type="Sistema_estudiosModel.CURSO" Role="CURSO" Multiplicity="1" />
+          <End Type="Sistema_estudiosModel.COMENTARIO" Role="COMENTARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CURSO">
+              <PropertyRef Name="id_curso" />
+            </Principal>
+            <Dependent Role="COMENTARIO">
+              <PropertyRef Name="curso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__COMENTARI__estud__6477ECF3">
+          <End Type="Sistema_estudiosModel.USUARIO" Role="USUARIO" Multiplicity="0..1" />
+          <End Type="Sistema_estudiosModel.COMENTARIO" Role="COMENTARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="COMENTARIO">
+              <PropertyRef Name="estudiante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PUBLICACI__curso__60A75C0F">
+          <End Type="Sistema_estudiosModel.CURSO" Role="CURSO" Multiplicity="1" />
+          <End Type="Sistema_estudiosModel.PUBLICACION" Role="PUBLICACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CURSO">
+              <PropertyRef Name="id_curso" />
+            </Principal>
+            <Dependent Role="PUBLICACION">
+              <PropertyRef Name="curso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -534,6 +727,35 @@
           </AssociationSetMapping>
           <FunctionImportMapping FunctionImportName="BUSCAR_USUARIOS" FunctionName="Sistema_estudiosModel.Store.BUSCAR_USUARIOS" />
           <FunctionImportMapping FunctionImportName="NUEVO_USER" FunctionName="Sistema_estudiosModel.Store.NUEVO_USER" />
+          <EntitySetMapping Name="ACTIVIDADs">
+            <EntityTypeMapping TypeName="Sistema_estudiosModel.ACTIVIDAD">
+              <MappingFragment StoreEntitySet="ACTIVIDAD">
+                <ScalarProperty Name="curso" ColumnName="curso" />
+                <ScalarProperty Name="id_evento" ColumnName="id_evento" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="id_Actividad" ColumnName="id_Actividad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMENTARIOs">
+            <EntityTypeMapping TypeName="Sistema_estudiosModel.COMENTARIO">
+              <MappingFragment StoreEntitySet="COMENTARIO">
+                <ScalarProperty Name="estudiante" ColumnName="estudiante" />
+                <ScalarProperty Name="curso" ColumnName="curso" />
+                <ScalarProperty Name="info" ColumnName="info" />
+                <ScalarProperty Name="id_Comentario" ColumnName="id_Comentario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PUBLICACIONs">
+            <EntityTypeMapping TypeName="Sistema_estudiosModel.PUBLICACION">
+              <MappingFragment StoreEntitySet="PUBLICACION">
+                <ScalarProperty Name="curso" ColumnName="curso" />
+                <ScalarProperty Name="info" ColumnName="info" />
+                <ScalarProperty Name="id_publicacon" ColumnName="id_publicacon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
