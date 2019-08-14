@@ -79,7 +79,7 @@ Create Table NOTA_EXAMEN(
 
 )
 
-Create Table Publicacion(
+Create Table PUBLICACION(
 
 	in_publicacon int identity primary key,
 	tipo int not null default 1,--1 Tarea 2 EXAMEN
