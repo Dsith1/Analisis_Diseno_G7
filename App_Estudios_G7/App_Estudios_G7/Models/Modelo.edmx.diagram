@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="159e4167b95b49f0b2af893b05443109" Name="Diagram1">
+        <EntityTypeShape EntityType="Sistema_estudiosModel.CURSO" Width="1.5" PointX="0.5" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Sistema_estudiosModel.EXAMan" Width="1.5" PointX="3.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Sistema_estudiosModel.NOTA_EXAMEN" Width="1.5" PointX="6.25" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Sistema_estudiosModel.NOTA_TAREA" Width="1.5" PointX="5" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Sistema_estudiosModel.TAREA" Width="1.5" PointX="2" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Sistema_estudiosModel.USUARIO" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+        <AssociationConnector Association="Sistema_estudiosModel.FK__CURSO__creador__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="Sistema_estudiosModel.FK__EXAMEN__curso__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="Sistema_estudiosModel.FK__TAREA__curso__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="Sistema_estudiosModel.FK__NOTA_EXAM__exame__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="Sistema_estudiosModel.FK__NOTA_EXAM__estud__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="Sistema_estudiosModel.FK__NOTA_TARE__estud__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="Sistema_estudiosModel.FK__NOTA_TARE__tarea__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="Sistema_estudiosModel.ASIGNACION" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
