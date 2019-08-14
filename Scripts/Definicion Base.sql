@@ -79,11 +79,30 @@ Create Table NOTA_EXAMEN(
 
 )
 
-Create Table PUBLICACION(
+Create Table ACTIVIDAD(
 
-	in_publicacon int identity primary key,
+	id_Actividad int identity primary key,
 	tipo int not null default 1,--1 Tarea 2 EXAMEN
 	id_evento int not null,--aqui irá el codigo del examen o de la tarea se buscara dependiendo del tipo
 	curso int not null,
 	foreign key(curso) references CURSO(id_curso)
 );
+
+Create Table PUBLICACION(
+
+	id_publicacon int identity primary key,
+	info varchar(max),
+	curso int not null,
+	foreign key(curso) references CURSO(id_curso)
+)
+
+Create Table COMENTARIO(
+
+	id_Comentario int identity primary key,
+	info varchar(max),
+	curso int not null,
+	estudiante int,
+	foreign key(curso) references CURSO(id_curso),
+	foreign key(estudiante) references USUARIO(id_usuario)
+
+)
