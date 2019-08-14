@@ -78,3 +78,12 @@ Create Table NOTA_EXAMEN(
 	foreign key(estudiante) references USUARIO(id_usuario)
 
 )
+
+Create Table Publicacion(
+
+	in_publicacon int identity primary key,
+	tipo int not null default 1,--1 Tarea 2 EXAMEN
+	id_evento int not null,--aqui irá el codigo del examen o de la tarea se buscara dependiendo del tipo
+	curso int not null,
+	foreign key(curso) references CURSO(id_curso)
+);
