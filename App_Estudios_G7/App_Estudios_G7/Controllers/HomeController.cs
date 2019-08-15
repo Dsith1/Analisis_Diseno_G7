@@ -15,7 +15,7 @@ namespace App_Estudios_G7.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Sitio Para el control de Cursos";
 
             return View();
         }

@@ -19,6 +19,13 @@
         <AssociationConnector Association="Sistema_estudiosModel.FK__NOTA_TARE__estud__45F365D3" ManuallyRouted="false" />
         <AssociationConnector Association="Sistema_estudiosModel.FK__NOTA_TARE__tarea__44FF419A" ManuallyRouted="false" />
         <AssociationConnector Association="Sistema_estudiosModel.ASIGNACION" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Sistema_estudiosModel.ACTIVIDAD" Width="1.5" PointX="2.75" PointY="12" />
+        <EntityTypeShape EntityType="Sistema_estudiosModel.COMENTARIO" Width="1.5" PointX="7.25" PointY="5.125" />
+        <EntityTypeShape EntityType="Sistema_estudiosModel.PUBLICACION" Width="1.5" PointX="2.75" PointY="14.75" />
+        <AssociationConnector Association="Sistema_estudiosModel.FK__ACTIVIDAD__curso__5DCAEF64" />
+        <AssociationConnector Association="Sistema_estudiosModel.FK__COMENTARI__curso__6383C8BA" />
+        <AssociationConnector Association="Sistema_estudiosModel.FK__COMENTARI__estud__6477ECF3" />
+        <AssociationConnector Association="Sistema_estudiosModel.FK__PUBLICACI__curso__60A75C0F" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -126,9 +126,17 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CURSOesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\USUARIOsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACTIVIDAD.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\COMENTARIO.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CURSO.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
@@ -157,6 +165,9 @@
     <Compile Include="Models\NOTA_TAREA.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PUBLICACION.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\TAREA.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
@@ -164,6 +175,13 @@
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Prueba.aspx.cs">
+      <DependentUpon>Prueba.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Prueba.aspx.designer.cs">
+      <DependentUpon>Prueba.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -184,6 +202,7 @@
       <DependentUpon>Modelo.edmx</DependentUpon>
       <LastGenOutput>Modelo.cs</LastGenOutput>
     </Content>
+    <Content Include="Prueba.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\Modelo.edmx">
@@ -216,8 +235,19 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\USUARIOs\Create.cshtml" />
+    <Content Include="Views\USUARIOs\Delete.cshtml" />
+    <Content Include="Views\USUARIOs\Details.cshtml" />
+    <Content Include="Views\USUARIOs\Edit.cshtml" />
+    <Content Include="Views\USUARIOs\Index.cshtml" />
+    <Content Include="Views\CURSOes\Create.cshtml" />
+    <Content Include="Views\CURSOes\Delete.cshtml" />
+    <Content Include="Views\CURSOes\Details.cshtml" />
+    <Content Include="Views\CURSOes\Edit.cshtml" />
+    <Content Include="Views\CURSOes\Index.cshtml" />
+    <Content Include="Views\CURSOes\IndexG.cshtml" />
+    <Content Include="Views\CURSOes\DetailsG.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -33,6 +33,9 @@ namespace App_Estudios_G7.Models
         public virtual DbSet<NOTA_TAREA> NOTA_TAREA { get; set; }
         public virtual DbSet<TAREA> TAREAs { get; set; }
         public virtual DbSet<USUARIO> USUARIOs { get; set; }
+        public virtual DbSet<ACTIVIDAD> ACTIVIDADs { get; set; }
+        public virtual DbSet<COMENTARIO> COMENTARIOs { get; set; }
+        public virtual DbSet<PUBLICACION> PUBLICACIONs { get; set; }
     
         public virtual ObjectResult<string> BUSCAR_USUARIOS()
         {
