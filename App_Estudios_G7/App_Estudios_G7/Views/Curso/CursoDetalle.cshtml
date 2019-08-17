@@ -1,0 +1,38 @@
+﻿
+@model List<App_Estudios_G7.Models.ListaCursos>
+
+@{
+    ViewBag.Title = "CursoDetalle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+<p class="lead">Detalle del curso</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>Nombre</td>
+            <td>Autor</td>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.id_curso</td>
+                    <td>@item.nombre</td>
+                    <td>@item.getAutor() </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<div>
+    @Html.ActionLink("Regresar al Inicio", "CursoIndex")
+</div>
+
