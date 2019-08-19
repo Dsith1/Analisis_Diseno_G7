@@ -22,7 +22,7 @@ namespace App_Estudios_G7.Controllers
                 using (Sistema_estudiosEntities db = new Sistema_estudiosEntities())
                 {
                     listCursos = db.Database.SqlQuery<ListaCursos>("OBTENER_CURSOS").ToList();
-                }
+                }   
             }
             catch (Exception ex)
             {
