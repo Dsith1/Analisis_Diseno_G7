@@ -18,6 +18,13 @@ namespace App_Estudios_G7
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+
+            routes.MapRoute(
+                name: "CursoDefault",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Curso", action = "CursoIndex", id = UrlParameter.Optional }
+            );
         }
     }
 }

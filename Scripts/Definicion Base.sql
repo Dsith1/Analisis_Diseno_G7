@@ -106,3 +106,11 @@ Create Table COMENTARIO(
 	foreign key(estudiante) references USUARIO(id_usuario)
 
 )
+
+create Table RES_EXAMEN(
+	examen int,
+	estudiante int,
+	respuestas varchar(max),
+	foreign key(examen) references CURSO(id_examen),
+	foreign key(estudiante) references USUARIO(id_usuario)
+);

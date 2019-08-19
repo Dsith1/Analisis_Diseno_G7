@@ -1,0 +1,49 @@
+﻿@using App_Estudios_G7.Models
+@model List<App_Estudios_G7.Models.ListaCursos>
+
+@{
+    ViewBag.Title = "CURSOS";
+}
+
+    <div class="jumbotron">
+        <h1>Cursos</h1>
+
+        <div class="row" style="text-align:right;">
+            <a class="btn btn-primary btn-lg" href="/Curso/CrearCurso">Crear Curso</a>
+        </div>
+
+        <form action="/Curso/CursoDetalle" method="post">
+            <div class="form-group">
+                <label for="txtBuscarCurso">Buscar Curso</label>
+                <input type="search" class="form-control" name="txtBuscarCurso" placeholder="Nombre del curso">    
+            </div>
+            <button type="submit" class="btn btn-info">Buscar</button>
+        </form>
+
+        <br />
+
+        <p class="lead">Lista de cursos actuales</p>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Nombre</td>
+                    <td>Autor</td>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.id_curso</td>
+                            <td>@item.nombre</td>
+                            <td>@item.getAutor() </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+
