@@ -12,7 +12,7 @@
     <div class="col-md-4">
         <h2>Cursos</h2>
         <p>
-            Estos son Todos los Cursos que te Ofrecemos 
+            Estos son Todos los Cursos que te Ofrecemos
         </p>
         <p><a class="btn btn-default" href="@Url.Action("IndexG", "CURSOes")">Cursos &raquo;</a></p>
     </div>
@@ -26,6 +26,14 @@
         <p>En esta demo no necesitará iniciar Sesión para crear Cursos*</p>
         <p><a class="btn btn-default" href="@Url.Action("Create", "CURSOes")">Crear Curso &raquo;</a></p>
     </div>
+
+    @* Boton temporal para editar el contenido del curso *@
+    <div class="col-md-4">
+        <h2>Contenido de los cursos</h2>
+        <p>Edicion del contenido de los cursos </p>
+        <p><a class="btn btn-default" href="@Url.Action("Details", "CURSOes")">Editar Curso &raquo;</a></p>
+    </div>
+
     <div>
         *Aplicacion en desarrollo algunas caracteristicas podrían ser cambias o eliminas en la version final
         @*   @Html.ActionLink("Lista de Usuarios", "Index", "USUARIOs")<br />*@
