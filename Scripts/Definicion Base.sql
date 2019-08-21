@@ -111,7 +111,6 @@ create Table RES_EXAMEN(
 	examen int,
 	estudiante int,
 	respuestas varchar(max),
-	foreign key(examen) references EXAMEN(id_examen),
-	foreign key(estudiante) references USUARIO(id_usuario),
-	primary key(examen,estudiante)
+	foreign key(examen) references CURSO(id_examen),
+	foreign key(estudiante) references EXAMEN(id_usuario)
 );
