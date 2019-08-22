@@ -11,7 +11,7 @@ namespace App_Estudios_G7.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
     public partial class EXAMan
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,11 +22,20 @@ namespace App_Estudios_G7.Models
         }
     
         public int id_examen { get; set; }
+        [Required]
+        [Display(Name = "Preguntas")]
         public string preguntas { get; set; }
+        [DataType(DataType.Date)]
+        [Display(Name = "Fecha")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public System.DateTime Fecha { get; set; }
+        [Required]
+        [Display(Name = "Cantidad de Minutos")]
         public int minutos { get; set; }
+        [Required]
+        [Display(Name = "Curso")]
         public int curso { get; set; }
-    
+
         public virtual CURSO CURSO1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NOTA_EXAMEN> NOTA_EXAMEN { get; set; }
