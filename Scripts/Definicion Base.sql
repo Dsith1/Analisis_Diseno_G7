@@ -38,7 +38,7 @@ Create Table ASIGNACION(
 Create Table TAREA(
 	
 	id_tarea int identity primary key,
-	Enunciado varchar (20) not null,
+	Enunciado varchar (300) not null,
 	Entrega datetime not null,
 	curso int not null,	
 	foreign key(curso) references CURSO(id_curso)
@@ -111,6 +111,6 @@ create Table RES_EXAMEN(
 	examen int,
 	estudiante int,
 	respuestas varchar(max),
-	foreign key(examen) references CURSO(id_examen),
+	foreign key(examen) references EXAMEN(id_examen),
 	foreign key(estudiante) references USUARIO(id_usuario)
 );

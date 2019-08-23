@@ -46,25 +46,15 @@ namespace App_Estudios_G7.Controllers
                 {
                     using (Sistema_estudiosEntities db = new Sistema_estudiosEntities())
                     {
-                        /*var newcurso = new CURSO();
-                        newcurso.nombre = model.nombre;
-                        newcurso.creador = model.usuario;
-
-                        db.CURSOes.Add(newcurso);
-                        db.SaveChanges();*/
-
                         db.Database.ExecuteSqlCommand("INSERTAR_CURSO @name, @autor",
                             new SqlParameter("name", model.nombre),
                             new SqlParameter("autor", model.usuario)
                         );
-
                     }
 
                     return Redirect("/Curso/CursoIndex");
                 }
-
                 return View();
-
             }
             catch (Exception ex)
             {
