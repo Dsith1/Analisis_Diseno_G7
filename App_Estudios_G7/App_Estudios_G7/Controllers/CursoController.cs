@@ -137,17 +137,41 @@ namespace App_Estudios_G7.Controllers
         }
 
         /*
-         * Controlador que me retorna el detalle del contenido de un curso
+         * Controlador que me retorna el detalle del contenido de un curso, busco cada cosa con el id que mando
          */
-         public ActionResult ContenidoCurso()
+         public ActionResult ContenidoCurso(int id_curso)
         {
-            return View();
+            //listas de examenes, tareas, actividades (Ubicacion: Models/ViewModels )
+            List<ListaExamen> listaExamen = new List<ListaExamen>();
+            //List<ListaTareas> listaTareas = new List<ListaTareas>();
+            //List<ListaActividad> listaActividades = new List<ListaActividad>();
+
+            try
+            {
+                using (Sistema_estudiosEntities db = new Sistema_estudiosEntities())
+                {
+                    listaExamen = db.Database.SqlQuery<ListaCursos>("OBTENER_CURSOS").ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al buscar la lista: ", ex);
+            }
+
+            return View(listaExamen);
         }
 
         /**
          * Controlador de creacion de examen
          */
          public ActionResult CrearExamen()
+        {
+            return View();
+        }
+
+        //Acciones cuando se sube la plantilla de crear examen
+        [HttpPost]
+        public ActionResult CrearExamen(ExamenViewModel examen)
         {
             return View();
         }
