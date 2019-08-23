@@ -60,6 +60,7 @@ namespace App_Estudios_G7.Controllers
                 DateTime dtActual = DateTime.UtcNow.Date;
                 if (DateTime.Compare(dt1,dtActual)<0) {
                     ViewBag.MessageError = "No puede ingresar una fecha anterior al dia de hoy";
+                    ViewBag.curso = new SelectList(db.CURSOes, "id_curso", "nombre", examan.curso);
                     return View(examan);
                 }
                 db.EXAMEN.Add(examan);
