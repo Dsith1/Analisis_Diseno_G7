@@ -27,22 +27,52 @@ namespace App_Estudios_G7.Controllers
         [HttpPost]
         public ActionResult Verificar(Cuenta cu)
         {
-            conectionString();
-            con.Open();
-            com.Connection = con;
-            com.CommandText = "select * from USUARIO where nick='"+cu.Name+"' and contra='"+cu.Password+"' ";
-            dr = com.ExecuteReader();
-            if (dr.Read())
+            if(cu.Rol.Equals("Administrador"))
             {
-                con.Close();
-                return RedirectToAction("Index", "Home");
-            }
+                conectionString();
+                con.Open();
+                com.Connection = con;
+                com.CommandText = "select * from USUARIO where nick='" + cu.Name + "' and contra='" + cu.Password + "' and rol ='" + cu.Rol + "'";
+                dr = com.ExecuteReader();
+                if (dr.Read())
+                {
+                    con.Close();
+                    return RedirectToAction("CrearCurso", "Curso");
+                }
 
-            else
-            {
-                con.Close();
-                return View("Error");
+                else
+                {
+                    con.Close();
+                    return View("Error");
+                }
             }
+            else if (cu.Rol.Equals("Estudiante"))
+            {
+                conectionString();
+                con.Open();
+                com.Connection = con;
+                com.CommandText = "select * from USUARIO where nick='" + cu.Name + "' and contra='" + cu.Password + "' and rol ='" + cu.Rol + "'";
+                dr = com.ExecuteReader();
+                if (dr.Read())
+                {
+                    con.Close();
+                    return RedirectToAction("Index", "Home");
+                }
+
+                else
+                {
+                    con.Close();
+                    return View("Error");
+                }
+            }
+            return View();
+            
+        }
+        public ActionResult Registrarse()
+        {
+            ViewBag.Message = "Registrate :D";
+
+            return View();
         }
     }
 }
