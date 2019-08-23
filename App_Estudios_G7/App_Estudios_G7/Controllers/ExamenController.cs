@@ -24,14 +24,18 @@ namespace App_Estudios_G7.Controllers
         // GET: /Examen/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
+            if (id == null || id < 1)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                ViewBag.MensajeError = "Verifique los datos";
+                return View("PaginaError");
+                // return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             EXAMan examan = db.EXAMEN.Find(id);
             if (examan == null)
             {
-                return HttpNotFound();
+                ViewBag.MensajeError = "Verifique los datos";
+                return View("PaginaError");
+                //return HttpNotFound();
             }
             return View(examan);
         }
@@ -52,11 +56,17 @@ namespace App_Estudios_G7.Controllers
         {
             if (ModelState.IsValid)
             {
+                DateTime dt1 = examan.Fecha;
+                DateTime dtActual = DateTime.UtcNow.Date;
+                if (DateTime.Compare(dt1,dtActual)<0) {
+                    ViewBag.MessageError = "No puede ingresar una fecha anterior al dia de hoy";
+                    return View(examan);
+                }
                 db.EXAMEN.Add(examan);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            Console.WriteLine("Hola Mundo");
             ViewBag.curso = new SelectList(db.CURSOes, "id_curso", "nombre", examan.curso);
             return View(examan);
         }
@@ -64,14 +74,18 @@ namespace App_Estudios_G7.Controllers
         // GET: /Examen/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+            if (id == null || id < 1)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                ViewBag.MensajeError = "Verifique los datos del elemento";
+                return View("PaginaError");
+                // return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             EXAMan examan = db.EXAMEN.Find(id);
             if (examan == null)
             {
-                return HttpNotFound();
+                ViewBag.MensajeError = "Verifique los datos del elemento";
+                return View("PaginaError");
+                //return HttpNotFound();
             }
             ViewBag.curso = new SelectList(db.CURSOes, "id_curso", "nombre", examan.curso);
             return View(examan);
@@ -97,14 +111,17 @@ namespace App_Estudios_G7.Controllers
         // GET: /Examen/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
+            if (id == null || id < 1)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                ViewBag.MensajeError = "Verifique los datos del elemento";
+                return View("PaginaError");
+                // return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             EXAMan examan = db.EXAMEN.Find(id);
             if (examan == null)
             {
-                return HttpNotFound();
+                ViewBag.MensajeError = "Verifique los datos del elemento";
+                return View("PaginaError");
             }
             return View(examan);
         }
@@ -114,6 +131,7 @@ namespace App_Estudios_G7.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+
             EXAMan examan = db.EXAMEN.Find(id);
             db.EXAMEN.Remove(examan);
             db.SaveChanges();

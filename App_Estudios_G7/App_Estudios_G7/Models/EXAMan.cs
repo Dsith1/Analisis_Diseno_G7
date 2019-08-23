@@ -24,13 +24,18 @@ namespace App_Estudios_G7.Models
         public int id_examen { get; set; }
         [Required]
         [Display(Name = "Preguntas")]
+        
         public string preguntas { get; set; }
+
         [DataType(DataType.Date)]
         [Display(Name = "Fecha")]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        //[Range(typeof(DateTime), "1/1/2019","31/12/2200",ErrorMessage ="Ingrese una fecha valida")]
+        //[DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public System.DateTime Fecha { get; set; }
         [Required]
         [Display(Name = "Cantidad de Minutos")]
+        [Range(1,200,ErrorMessage ="Numero de minutos entre 1 y 200")]
         public int minutos { get; set; }
         [Required]
         [Display(Name = "Curso")]
