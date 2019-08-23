@@ -109,9 +109,9 @@ namespace App_Estudios_G7.Controllers
             return View(listCursos);
         }
 
-        
+
         //Controlador que me retorna la vista de todos los cursos del usuario
-        public ActionResult MisCursos(/*int id_usuario*/){
+        public ActionResult MisCursos(/*int id_usuario*/) {
             //Antes que regresar tengo que hacer una revision del rol del usuario, tiene que ser profesor
 
             //Pendiente hasta el siguiente sprint
@@ -119,11 +119,13 @@ namespace App_Estudios_G7.Controllers
             //Buscoi la lista de todos los cursos
             List<ListaCursos> listCursos = new List<ListaCursos>();
 
+            //por ahora voy a usar un raw query para trabajar, no es el metodo mas seguro
+            string query = "Select c.id_curso, c.nombre from Curso c where c.creador = 1;"; //cambiar el 1 por el id_usuario cuando se integre esa parte
             try
             {
                 using (Sistema_estudiosEntities db = new Sistema_estudiosEntities())
                 {
-                    listCursos = db.Database.SqlQuery<ListaCursos>("OBTENER_CURSOS").ToList();
+                    listCursos = db.Database.SqlQuery<ListaCursos>(query).ToList();
                 }
             }
             catch (Exception ex)
@@ -133,7 +135,37 @@ namespace App_Estudios_G7.Controllers
 
             return View(listCursos);
         }
-        
 
+        /*
+         * Controlador que me retorna el detalle del contenido de un curso
+         */
+         public ActionResult ContenidoCurso()
+        {
+            return View();
+        }
+
+        /**
+         * Controlador de creacion de examen
+         */
+         public ActionResult CrearExamen()
+        {
+            return View();
+        }
+
+        /*
+         * Controlador de creacion de tarea
+         */
+         public ActionResult CrearTarea()
+        {
+            return View();
+        }
+
+        /*
+         * Controlador de creacion de actividad
+         */
+         public ActionResult CrearActividad()
+        {
+            return View();
+        }
     }
 }
