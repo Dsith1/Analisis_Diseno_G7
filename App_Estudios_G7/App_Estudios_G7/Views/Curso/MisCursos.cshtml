@@ -1,0 +1,47 @@
+﻿@using App_Estudios_G7.Models
+@model List<App_Estudios_G7.Models.ListaCursos>
+
+@{
+    ViewBag.Title = "Mis Cursos";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Mis Cursos</title>
+</head>
+<body>
+    <div class="jumbotron">
+        <h1>Mis Cursos</h1>
+        <p class="lead">Lista de cursos que administra</p>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Nombre</td>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.id_curso</td>
+                            <td>@item.nombre</td>
+                            <td>
+                                @Html.ActionLink("Editar", "Edit", new { id = item.id_curso }) |
+                                @Html.ActionLink("Borrar", "Delete", new { id = item.id_curso })
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
+

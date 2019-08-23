@@ -13,6 +13,9 @@ namespace App_Estudios_G7.Controllers
     {
         Sistema_estudiosEntities BD = new Sistema_estudiosEntities();
 
+        /**
+         * Metodo que da una lista al view para desplegar todos los cursos, unicamente visible para el admin
+         */
         public ActionResult CursoIndex()
         {
             List<ListaCursos> listCursos = new List<ListaCursos>();
@@ -32,11 +35,19 @@ namespace App_Estudios_G7.Controllers
             return View(listCursos);
         }
 
+
+        /*
+         * Solo me retorna el view para crear un curso
+         */
         public ActionResult CrearCurso()
         {
             return View();
         }
 
+        /**
+         * Metodo que tiene como objetivo ya realizar la operacion
+         * sobre la bd para crear un curso
+         */
         [HttpPost]
         public ActionResult CrearCurso(CursoViewModel model)
         {
@@ -73,6 +84,9 @@ namespace App_Estudios_G7.Controllers
 
         }
 
+        /**
+         * Busca un curso y me regresa todas sus cualidades
+         */
         public ActionResult CursoDetalle(string txtBuscarCurso)
         {
             List<ListaCursos> listCursos = new List<ListaCursos>();
@@ -94,6 +108,32 @@ namespace App_Estudios_G7.Controllers
 
             return View(listCursos);
         }
+
+        
+        //Controlador que me retorna la vista de todos los cursos del usuario
+        public ActionResult MisCursos(/*int id_usuario*/){
+            //Antes que regresar tengo que hacer una revision del rol del usuario, tiene que ser profesor
+
+            //Pendiente hasta el siguiente sprint
+
+            //Buscoi la lista de todos los cursos
+            List<ListaCursos> listCursos = new List<ListaCursos>();
+
+            try
+            {
+                using (Sistema_estudiosEntities db = new Sistema_estudiosEntities())
+                {
+                    listCursos = db.Database.SqlQuery<ListaCursos>("OBTENER_CURSOS").ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al buscar la lista: ", ex);
+            }
+
+            return View(listCursos);
+        }
+        
 
     }
 }
