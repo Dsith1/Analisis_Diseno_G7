@@ -137,6 +137,9 @@
     <Compile Include="Models\ACTIVIDAD.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BUSCAR_CURSO_Result.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\COMENTARIO.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
@@ -147,33 +150,20 @@
     <Compile Include="Models\EXAMan.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
-
-    <Compile Include="Models\ViewModels\ActividadViewModel.cs" />
-    <Compile Include="Models\ViewModels\ListaActividad.cs" />
-    <Compile Include="Models\ViewModels\ListaExamen.cs" />
-    <Compile Include="Models\ViewModels\ListaTareas.cs" />
-
-    <Compile Include="Models\RES_EXAMEN.cs">
-      <DependentUpon>Modelo.tt</DependentUpon>
-    </Compile>
-
-    <Compile Include="Models\ViewModels\CursoViewModel.cs" />
-    <Compile Include="Models\ViewModels\ExamenViewModel.cs" />
-    <Compile Include="Models\ViewModels\ListaCursos.cs" />
     <Compile Include="Models\Modelo.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>Modelo.Context.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Models\Modelo.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>Modelo.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Models\Modelo.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>Modelo.edmx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Models\NOTA_EXAMEN.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
@@ -181,7 +171,13 @@
     <Compile Include="Models\NOTA_TAREA.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\OBTENER_CURSOS_Result.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\PUBLICACION.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RES_EXAMEN.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TAREA.cs">
@@ -190,8 +186,20 @@
     <Compile Include="Models\USUARIO.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewModels\ActividadViewModel.cs" />
+    <Compile Include="Models\ViewModels\ListaActividad.cs" />
+    <Compile Include="Models\ViewModels\ListaExamen.cs" />
+    <Compile Include="Models\ViewModels\ListaTareas.cs" />
+    <Compile Include="Models\ViewModels\CursoViewModel.cs" />
+    <Compile Include="Models\ViewModels\ExamenViewModel.cs" />
+    <Compile Include="Models\ViewModels\ListaCursos.cs" />
     <Compile Include="Models\ViewModels\TareaViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Prueba.aspx.cs">
       <DependentUpon>Prueba.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -213,30 +221,30 @@
     <Content Include="images\bg.jpg" />
     <Content Include="images\tick.png" />
     <Content Include="Models\Modelo.Context.tt">
+      <DependentUpon>Modelo.edmx</DependentUpon>
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Modelo.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Modelo.edmx.diagram">
       <DependentUpon>Modelo.edmx</DependentUpon>
     </Content>
     <Content Include="Models\Modelo.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Modelo.edmx</DependentUpon>
+      <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Modelo.cs</LastGenOutput>
     </Content>
     <Content Include="Prueba.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\Modelo.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Modelo.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Modelo.edmx.diagram">
-      <DependentUpon>Modelo.edmx</DependentUpon>
-    </Content>
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -250,16 +258,13 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Styles\font-awesome.min.css" />
     <Content Include="Styles\style.css" />
-
-    ---<Content Include="Web.config">
-    --- <SubType>Designer</SubType>
-    ---</Content>
-
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Styles\Style1.css" />
     <Content Include="Styles\Style2.css" />
     <Content Include="Styles\Style3.css" />
     <Content Include="Web.config" />
-
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -291,23 +296,19 @@
     <Content Include="Views\_LayoutPage1.cshtml" />
     <Content Include="Views\Cuenta\Login.cshtml" />
     <Content Include="Views\Cuenta\Error.cshtml" />
-
     <Content Include="Views\Curso\MisCursos.cshtml" />
     <Content Include="Views\Curso\ContenidoCurso.cshtml" />
     <Content Include="Views\Curso\CrearExamen.cshtml" />
     <Content Include="Views\Curso\CrearTarea.cshtml" />
     <Content Include="Views\Curso\CrearActividad.cshtml" />
-
     <Content Include="Views\Examen\Create.cshtml" />
     <Content Include="Views\Examen\Delete.cshtml" />
     <Content Include="Views\Examen\Details.cshtml" />
     <Content Include="Views\Examen\Edit.cshtml" />
     <Content Include="Views\Examen\Index.cshtml" />
     <Content Include="Views\Examen\PaginaError.cshtml" />
-
     <Content Include="Views\Cuenta\Registrarse.cshtml" />
     <Content Include="Views\_LayoutPage2.cshtml" />
-
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -328,6 +329,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Models\Modelo.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Modelo.Designer.cs</LastGenOutput>
+    </EntityDeploy>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
