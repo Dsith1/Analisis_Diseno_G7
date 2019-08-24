@@ -1,0 +1,57 @@
+﻿@model App_Estudios_G7.Models.TAREA
+
+@{
+    ViewBag.Title = "Detalle de la tarea";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Tarea </h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Id tarea
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_tarea)
+        </dd>
+
+        <dt>
+            Enunciado
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Enunciado)
+        </dd>
+
+        <dt>
+            Entrega
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Entrega)
+        </dd>
+
+        <dt>
+            Ponderacion
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ponderacion)
+        </dd>
+
+        <dt>
+            Curso
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CURSO1.nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Regresar a las tareas", "TareaIndex")
+</p>

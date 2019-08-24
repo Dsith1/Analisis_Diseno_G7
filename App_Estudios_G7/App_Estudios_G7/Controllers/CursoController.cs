@@ -3,6 +3,7 @@ using App_Estudios_G7.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -41,6 +42,7 @@ namespace App_Estudios_G7.Controllers
          */
         public ActionResult CrearCurso()
         {
+            ViewBag.creador = new SelectList(BD.USUARIOs, "id_usuario", "nick");
             return View();
         }
 
@@ -49,7 +51,7 @@ namespace App_Estudios_G7.Controllers
          * sobre la bd para crear un curso
          */
         [HttpPost]
-        public ActionResult CrearCurso(CursoViewModel model)
+        public ActionResult CrearCurso(CURSO model)
         {
             try
             {
@@ -57,31 +59,23 @@ namespace App_Estudios_G7.Controllers
                 {
                     using (Sistema_estudiosEntities db = new Sistema_estudiosEntities())
                     {
-                        /*var newcurso = new CURSO();
-                        newcurso.nombre = model.nombre;
-                        newcurso.creador = model.usuario;
-
-                        db.CURSOes.Add(newcurso);
-                        db.SaveChanges();*/
-
                         db.Database.ExecuteSqlCommand("INSERTAR_CURSO @name, @autor",
                             new SqlParameter("name", model.nombre),
-                            new SqlParameter("autor", model.usuario)
+                            new SqlParameter("autor", model.creador)
                         );
-
                     }
-
                     return Redirect("/Curso/CursoIndex");
                 }
-
-                return View();
-
+               
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
 
+
+            ViewBag.creador = new SelectList(BD.USUARIOs, "id_usuario", "nick", model.creador);
+            return View(model);
         }
 
         /**
@@ -108,6 +102,7 @@ namespace App_Estudios_G7.Controllers
 
             return View(listCursos);
         }
+
 
 
         //Controlador que me retorna la vista de todos los cursos del usuario
@@ -212,5 +207,6 @@ namespace App_Estudios_G7.Controllers
         {
             return View();
         }
+
     }
 }
