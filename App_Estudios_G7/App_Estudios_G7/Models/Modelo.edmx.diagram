@@ -26,6 +26,9 @@
         <AssociationConnector Association="Sistema_estudiosModel.FK__COMENTARI__curso__6383C8BA" />
         <AssociationConnector Association="Sistema_estudiosModel.FK__COMENTARI__estud__6477ECF3" />
         <AssociationConnector Association="Sistema_estudiosModel.FK__PUBLICACI__curso__60A75C0F" />
+        <EntityTypeShape EntityType="Sistema_estudiosModel.RES_EXAMEN" Width="1.5" PointX="7.5" PointY="8.25" />
+        <AssociationConnector Association="Sistema_estudiosModel.FK__RES_EXAME__exame__44FF419A" />
+        <AssociationConnector Association="Sistema_estudiosModel.FK__RES_EXAME__estud__45F365D3" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

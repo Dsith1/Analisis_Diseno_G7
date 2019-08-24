@@ -12,8 +12,6 @@
     <div class="col-md-4">
         <h2>Cursos</h2>
         <p>
-                
-
             Estos son Todos los Cursos que te Ofrecemos 
         </p>
         <p><a class="btn btn-default" href="@Url.Action("CursoIndex", "Curso")">Cursos &raquo;</a></p>
@@ -28,6 +26,14 @@
         <p>En esta demo no necesitará iniciar Sesión para crear Cursos*</p>
         <p><a class="btn btn-default" href="@Url.Action("CrearCurso", "Curso")">Crear Curso &raquo;</a></p>
     </div>
+
+    @* Boton para ver los cursos que yo he creado *@
+    <div class="col-md-4">
+        <h2>Mis Cursos</h2>
+        <p>Lista de mis cursos </p>
+        <p><a class="btn btn-default" href="@Url.Action("MisCursos", "Curso")">Editar Curso &raquo;</a></p>
+    </div>
+
     <div>
         *Aplicacion en desarrollo algunas caracteristicas podrían ser cambias o eliminas en la version final
         @*   @Html.ActionLink("Lista de Usuarios", "Index", "USUARIOs")<br />*@

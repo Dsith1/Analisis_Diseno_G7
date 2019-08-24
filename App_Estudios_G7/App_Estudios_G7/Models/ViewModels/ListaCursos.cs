@@ -12,5 +12,6 @@ namespace App_Estudios_G7.Models.ViewModels
         public string nombre_1 { get; set; }
         public string apellido_1 { get; set; }
         public string getAutor() { return nombre_1 + " " + apellido_1; }
+
     }
 }
