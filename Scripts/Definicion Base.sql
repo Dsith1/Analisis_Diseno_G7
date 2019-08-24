@@ -41,6 +41,7 @@ Create Table TAREA(
 	Enunciado varchar (300) not null,
 	Entrega datetime not null,
 	curso int not null,	
+	ponderacion decimal(5,2),
 	foreign key(curso) references CURSO(id_curso)
 	
 );
@@ -54,7 +55,7 @@ Create Table NOTA_TAREA(
 	foreign key(tarea) references TAREA(id_tarea),
 	foreign key(estudiante) references USUARIO(id_usuario)
 
-)
+);
 
 Create Table EXAMEN(
 	

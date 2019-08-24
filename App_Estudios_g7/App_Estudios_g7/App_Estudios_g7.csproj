@@ -126,6 +126,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CargaArchivo.cs" />
     <Compile Include="Controllers\CursoController.cs" />
     <Compile Include="Controllers\CuentaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -274,9 +275,11 @@
     <Content Include="Views\Tarea\TareaCreate.cshtml" />
     <Content Include="Views\Tarea\TareaDetails.cshtml" />
     <Content Include="Views\Tarea\TareaIndex.cshtml" />
+    <Content Include="Views\Tarea\CargarTarea.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Temp\" />
     <Folder Include="Views\Default\" />
     <Folder Include="Views\prueba\" />
   </ItemGroup>
