@@ -11,7 +11,8 @@ namespace App_Estudios_G7.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class TAREA
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,8 +23,11 @@ namespace App_Estudios_G7.Models
     
         public int id_tarea { get; set; }
         public string Enunciado { get; set; }
+
+        [DataType(DataType.Date)]
         public System.DateTime Entrega { get; set; }
         public int curso { get; set; }
+        public decimal Ponderacion { get; set; }
     
         public virtual CURSO CURSO1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
