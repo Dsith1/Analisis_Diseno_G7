@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Sistema_estudiosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Sistema_estudiosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ACTIVIDAD">
           <Key>
             <PropertyRef Name="id_Actividad" />
@@ -106,9 +106,9 @@
           <Property Name="apellido_2" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="edad" Type="int" Nullable="false" />
           <Property Name="correo" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="rol" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="rol" Type="varchar" MaxLength="20" />
         </EntityType>
-        <Association Name="FK__ACTIVIDAD__curso__5165187F">
+        <Association Name="FK__ACTIVIDAD__curso__2A4B4B5E">
           <End Role="CURSO" Type="Self.CURSO" Multiplicity="1" />
           <End Role="ACTIVIDAD" Type="Self.ACTIVIDAD" Multiplicity="*" />
           <ReferentialConstraint>
@@ -120,7 +120,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ASIGNACIO__id_cu__3D5E1FD2">
+        <Association Name="FK__ASIGNACIO__id_cu__164452B1">
           <End Role="CURSO" Type="Self.CURSO" Multiplicity="1" />
           <End Role="ASIGNACION" Type="Self.ASIGNACION" Multiplicity="*" />
           <ReferentialConstraint>
@@ -132,7 +132,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ASIGNACIO__id_us__3E52440B">
+        <Association Name="FK__ASIGNACIO__id_us__173876EA">
           <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
           <End Role="ASIGNACION" Type="Self.ASIGNACION" Multiplicity="*" />
           <ReferentialConstraint>
@@ -144,7 +144,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__COMENTARI__curso__571DF1D5">
+        <Association Name="FK__COMENTARI__curso__300424B4">
           <End Role="CURSO" Type="Self.CURSO" Multiplicity="1" />
           <End Role="COMENTARIO" Type="Self.COMENTARIO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -156,7 +156,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__COMENTARI__estud__5812160E">
+        <Association Name="FK__COMENTARI__estud__30F848ED">
           <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
           <End Role="COMENTARIO" Type="Self.COMENTARIO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -168,7 +168,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CURSO__creador__3A81B327">
+        <Association Name="FK__CURSO__creador__1367E606">
           <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
           <End Role="CURSO" Type="Self.CURSO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -180,7 +180,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__EXAMEN__curso__48CFD27E">
+        <Association Name="FK__EXAMEN__curso__21B6055D">
           <End Role="CURSO" Type="Self.CURSO" Multiplicity="1" />
           <End Role="EXAMEN" Type="Self.EXAMEN" Multiplicity="*" />
           <ReferentialConstraint>
@@ -192,7 +192,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__NOTA_EXAM__estud__4D94879B">
+        <Association Name="FK__NOTA_EXAM__estud__267ABA7A">
           <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
           <End Role="NOTA_EXAMEN" Type="Self.NOTA_EXAMEN" Multiplicity="*" />
           <ReferentialConstraint>
@@ -204,7 +204,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__NOTA_EXAM__exame__4CA06362">
+        <Association Name="FK__NOTA_EXAM__exame__25869641">
           <End Role="EXAMEN" Type="Self.EXAMEN" Multiplicity="1" />
           <End Role="NOTA_EXAMEN" Type="Self.NOTA_EXAMEN" Multiplicity="*" />
           <ReferentialConstraint>
@@ -216,7 +216,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__NOTA_TARE__estud__45F365D3">
+        <Association Name="FK__NOTA_TARE__estud__1ED998B2">
           <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
           <End Role="NOTA_TAREA" Type="Self.NOTA_TAREA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -228,7 +228,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__NOTA_TARE__tarea__44FF419A">
+        <Association Name="FK__NOTA_TARE__tarea__1DE57479">
           <End Role="TAREA" Type="Self.TAREA" Multiplicity="1" />
           <End Role="NOTA_TAREA" Type="Self.NOTA_TAREA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -240,7 +240,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PUBLICACI__curso__5441852A">
+        <Association Name="FK__PUBLICACI__curso__2D27B809">
           <End Role="CURSO" Type="Self.CURSO" Multiplicity="1" />
           <End Role="PUBLICACION" Type="Self.PUBLICACION" Multiplicity="*" />
           <ReferentialConstraint>
@@ -252,7 +252,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__RES_EXAME__estud__5BE2A6F2">
+
+        <Association Name="FK__RES_EXAME__estud__45F365D3">
           <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
           <End Role="RES_EXAMEN" Type="Self.RES_EXAMEN" Multiplicity="*" />
           <ReferentialConstraint>
@@ -264,7 +265,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__RES_EXAME__exame__5AEE82B9">
+        <Association Name="FK__RES_EXAME__exame__44FF419A">
           <End Role="EXAMEN" Type="Self.EXAMEN" Multiplicity="1" />
           <End Role="RES_EXAMEN" Type="Self.RES_EXAMEN" Multiplicity="*" />
           <ReferentialConstraint>
@@ -276,7 +277,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TAREA__curso__412EB0B6">
+
+        <Association Name="FK__TAREA__curso__1A14E395">
           <End Role="CURSO" Type="Self.CURSO" Multiplicity="1" />
           <End Role="TAREA" Type="Self.TAREA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -288,26 +290,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="BUSCAR_CURSO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="name" Type="nvarchar" Mode="In" />
-        </Function>
-        <Function Name="BUSCAR_USUARIOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="INSERTAR_CURSO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="name" Type="nvarchar" Mode="In" />
-          <Parameter Name="autor" Type="int" Mode="In" />
-        </Function>
-        <Function Name="NUEVO_USER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Nuevo_Nick" Type="varchar" Mode="In" />
-          <Parameter Name="Nuevo_contra" Type="varchar" Mode="In" />
-          <Parameter Name="Nuevo_nombre_1" Type="varchar" Mode="In" />
-          <Parameter Name="Nuevo_nombre_2" Type="varchar" Mode="In" />
-          <Parameter Name="Nuevo_apellido_1" Type="varchar" Mode="In" />
-          <Parameter Name="Nuevo_apellido_2" Type="varchar" Mode="In" />
-          <Parameter Name="Nuevo_edad" Type="int" Mode="In" />
-          <Parameter Name="Nuevo_correo" Type="varchar" Mode="In" />
-          <Parameter Name="Nuevo_rol" Type="varchar" Mode="In" />
-        </Function>
-        <Function Name="OBTENER_CURSOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="Sistema_estudiosModelStoreContainer">
           <EntitySet Name="ACTIVIDAD" EntityType="Self.ACTIVIDAD" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ASIGNACION" EntityType="Self.ASIGNACION" Schema="dbo" store:Type="Tables" />
@@ -320,63 +302,65 @@
           <EntitySet Name="RES_EXAMEN" EntityType="Self.RES_EXAMEN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TAREA" EntityType="Self.TAREA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__ACTIVIDAD__curso__5165187F" Association="Self.FK__ACTIVIDAD__curso__5165187F">
+          <AssociationSet Name="FK__ACTIVIDAD__curso__2A4B4B5E" Association="Self.FK__ACTIVIDAD__curso__2A4B4B5E">
             <End Role="CURSO" EntitySet="CURSO" />
             <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
           </AssociationSet>
-          <AssociationSet Name="FK__ASIGNACIO__id_cu__3D5E1FD2" Association="Self.FK__ASIGNACIO__id_cu__3D5E1FD2">
+          <AssociationSet Name="FK__ASIGNACIO__id_cu__164452B1" Association="Self.FK__ASIGNACIO__id_cu__164452B1">
             <End Role="CURSO" EntitySet="CURSO" />
             <End Role="ASIGNACION" EntitySet="ASIGNACION" />
           </AssociationSet>
-          <AssociationSet Name="FK__ASIGNACIO__id_us__3E52440B" Association="Self.FK__ASIGNACIO__id_us__3E52440B">
+          <AssociationSet Name="FK__ASIGNACIO__id_us__173876EA" Association="Self.FK__ASIGNACIO__id_us__173876EA">
             <End Role="USUARIO" EntitySet="USUARIO" />
             <End Role="ASIGNACION" EntitySet="ASIGNACION" />
           </AssociationSet>
-          <AssociationSet Name="FK__COMENTARI__curso__571DF1D5" Association="Self.FK__COMENTARI__curso__571DF1D5">
+          <AssociationSet Name="FK__COMENTARI__curso__300424B4" Association="Self.FK__COMENTARI__curso__300424B4">
             <End Role="CURSO" EntitySet="CURSO" />
             <End Role="COMENTARIO" EntitySet="COMENTARIO" />
           </AssociationSet>
-          <AssociationSet Name="FK__COMENTARI__estud__5812160E" Association="Self.FK__COMENTARI__estud__5812160E">
+          <AssociationSet Name="FK__COMENTARI__estud__30F848ED" Association="Self.FK__COMENTARI__estud__30F848ED">
             <End Role="USUARIO" EntitySet="USUARIO" />
             <End Role="COMENTARIO" EntitySet="COMENTARIO" />
           </AssociationSet>
-          <AssociationSet Name="FK__CURSO__creador__3A81B327" Association="Self.FK__CURSO__creador__3A81B327">
+          <AssociationSet Name="FK__CURSO__creador__1367E606" Association="Self.FK__CURSO__creador__1367E606">
             <End Role="USUARIO" EntitySet="USUARIO" />
             <End Role="CURSO" EntitySet="CURSO" />
           </AssociationSet>
-          <AssociationSet Name="FK__EXAMEN__curso__48CFD27E" Association="Self.FK__EXAMEN__curso__48CFD27E">
+          <AssociationSet Name="FK__EXAMEN__curso__21B6055D" Association="Self.FK__EXAMEN__curso__21B6055D">
             <End Role="CURSO" EntitySet="CURSO" />
             <End Role="EXAMEN" EntitySet="EXAMEN" />
           </AssociationSet>
-          <AssociationSet Name="FK__NOTA_EXAM__estud__4D94879B" Association="Self.FK__NOTA_EXAM__estud__4D94879B">
+          <AssociationSet Name="FK__NOTA_EXAM__estud__267ABA7A" Association="Self.FK__NOTA_EXAM__estud__267ABA7A">
             <End Role="USUARIO" EntitySet="USUARIO" />
             <End Role="NOTA_EXAMEN" EntitySet="NOTA_EXAMEN" />
           </AssociationSet>
-          <AssociationSet Name="FK__NOTA_EXAM__exame__4CA06362" Association="Self.FK__NOTA_EXAM__exame__4CA06362">
+          <AssociationSet Name="FK__NOTA_EXAM__exame__25869641" Association="Self.FK__NOTA_EXAM__exame__25869641">
             <End Role="EXAMEN" EntitySet="EXAMEN" />
             <End Role="NOTA_EXAMEN" EntitySet="NOTA_EXAMEN" />
           </AssociationSet>
-          <AssociationSet Name="FK__NOTA_TARE__estud__45F365D3" Association="Self.FK__NOTA_TARE__estud__45F365D3">
+          <AssociationSet Name="FK__NOTA_TARE__estud__1ED998B2" Association="Self.FK__NOTA_TARE__estud__1ED998B2">
             <End Role="USUARIO" EntitySet="USUARIO" />
             <End Role="NOTA_TAREA" EntitySet="NOTA_TAREA" />
           </AssociationSet>
-          <AssociationSet Name="FK__NOTA_TARE__tarea__44FF419A" Association="Self.FK__NOTA_TARE__tarea__44FF419A">
+          <AssociationSet Name="FK__NOTA_TARE__tarea__1DE57479" Association="Self.FK__NOTA_TARE__tarea__1DE57479">
             <End Role="TAREA" EntitySet="TAREA" />
             <End Role="NOTA_TAREA" EntitySet="NOTA_TAREA" />
           </AssociationSet>
-          <AssociationSet Name="FK__PUBLICACI__curso__5441852A" Association="Self.FK__PUBLICACI__curso__5441852A">
+          <AssociationSet Name="FK__PUBLICACI__curso__2D27B809" Association="Self.FK__PUBLICACI__curso__2D27B809">
             <End Role="CURSO" EntitySet="CURSO" />
             <End Role="PUBLICACION" EntitySet="PUBLICACION" />
           </AssociationSet>
-          <AssociationSet Name="FK__RES_EXAME__estud__5BE2A6F2" Association="Self.FK__RES_EXAME__estud__5BE2A6F2">
+
+          <AssociationSet Name="FK__RES_EXAME__estud__45F365D3" Association="Self.FK__RES_EXAME__estud__45F365D3">
             <End Role="USUARIO" EntitySet="USUARIO" />
             <End Role="RES_EXAMEN" EntitySet="RES_EXAMEN" />
           </AssociationSet>
-          <AssociationSet Name="FK__RES_EXAME__exame__5AEE82B9" Association="Self.FK__RES_EXAME__exame__5AEE82B9">
+          <AssociationSet Name="FK__RES_EXAME__exame__44FF419A" Association="Self.FK__RES_EXAME__exame__44FF419A">
             <End Role="EXAMEN" EntitySet="EXAMEN" />
             <End Role="RES_EXAMEN" EntitySet="RES_EXAMEN" />
           </AssociationSet>
-          <AssociationSet Name="FK__TAREA__curso__412EB0B6" Association="Self.FK__TAREA__curso__412EB0B6">
+
+          <AssociationSet Name="FK__TAREA__curso__1A14E395" Association="Self.FK__TAREA__curso__1A14E395">
             <End Role="CURSO" EntitySet="CURSO" />
             <End Role="TAREA" EntitySet="TAREA" />
           </AssociationSet>
@@ -468,7 +452,7 @@
       
           <NavigationProperty Name="RES_EXAMEN" Relationship="Sistema_estudiosModel.FK__RES_EXAME__estud__45F365D3" FromRole="USUARIO" ToRole="RES_EXAMEN" />
 
-          <Property Name="rol" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+         --// <Property Name="rol" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
 
         </EntityType>
         <Association Name="FK__CURSO__creador__3A81B327">
@@ -637,26 +621,6 @@
             <End Role="USUARIO" EntitySet="USUARIOs" />
             <End Role="RES_EXAMEN" EntitySet="RES_EXAMEN" />
           </AssociationSet>
-          <FunctionImport Name="BUSCAR_CURSO" ReturnType="Collection(Sistema_estudiosModel.BUSCAR_CURSO_Result)">
-            <Parameter Name="name" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="BUSCAR_USUARIOS1" ReturnType="Collection(String)" />
-          <FunctionImport Name="INSERTAR_CURSO">
-            <Parameter Name="name" Mode="In" Type="String" />
-            <Parameter Name="autor" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="NUEVO_USER1">
-            <Parameter Name="Nuevo_Nick" Mode="In" Type="String" />
-            <Parameter Name="Nuevo_contra" Mode="In" Type="String" />
-            <Parameter Name="Nuevo_nombre_1" Mode="In" Type="String" />
-            <Parameter Name="Nuevo_nombre_2" Mode="In" Type="String" />
-            <Parameter Name="Nuevo_apellido_1" Mode="In" Type="String" />
-            <Parameter Name="Nuevo_apellido_2" Mode="In" Type="String" />
-            <Parameter Name="Nuevo_edad" Mode="In" Type="Int32" />
-            <Parameter Name="Nuevo_correo" Mode="In" Type="String" />
-            <Parameter Name="Nuevo_rol" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="OBTENER_CURSOS" ReturnType="Collection(Sistema_estudiosModel.OBTENER_CURSOS_Result)" />
         </EntityContainer>
         <EntityType Name="ACTIVIDAD">
           <Key>
@@ -771,18 +735,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="BUSCAR_CURSO_Result">
-          <Property Type="Int32" Name="id_curso" Nullable="false" />
-          <Property Type="String" Name="nombre" Nullable="false" MaxLength="20" />
-          <Property Type="String" Name="nombre_1" Nullable="false" MaxLength="20" />
-          <Property Type="String" Name="apellido_1" Nullable="true" MaxLength="20" />
-        </ComplexType>
-        <ComplexType Name="OBTENER_CURSOS_Result">
-          <Property Type="Int32" Name="id_curso" Nullable="false" />
-          <Property Type="String" Name="nombre" Nullable="false" MaxLength="20" />
-          <Property Type="String" Name="nombre_1" Nullable="false" MaxLength="20" />
-          <Property Type="String" Name="apellido_1" Nullable="true" MaxLength="20" />
-        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -899,29 +851,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="BUSCAR_CURSO" FunctionName="Sistema_estudiosModel.Store.BUSCAR_CURSO">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="Sistema_estudiosModel.BUSCAR_CURSO_Result">
-                <ScalarProperty Name="id_curso" ColumnName="id_curso" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="nombre_1" ColumnName="nombre_1" />
-                <ScalarProperty Name="apellido_1" ColumnName="apellido_1" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="BUSCAR_USUARIOS1" FunctionName="Sistema_estudiosModel.Store.BUSCAR_USUARIOS" />
-          <FunctionImportMapping FunctionImportName="INSERTAR_CURSO" FunctionName="Sistema_estudiosModel.Store.INSERTAR_CURSO" />
-          <FunctionImportMapping FunctionImportName="NUEVO_USER1" FunctionName="Sistema_estudiosModel.Store.NUEVO_USER" />
-          <FunctionImportMapping FunctionImportName="OBTENER_CURSOS" FunctionName="Sistema_estudiosModel.Store.OBTENER_CURSOS">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="Sistema_estudiosModel.OBTENER_CURSOS_Result">
-                <ScalarProperty Name="id_curso" ColumnName="id_curso" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="nombre_1" ColumnName="nombre_1" />
-                <ScalarProperty Name="apellido_1" ColumnName="apellido_1" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
