@@ -4,31 +4,31 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="159e4167b95b49f0b2af893b05443109" Name="Diagram1">
-        <EntityTypeShape EntityType="Sistema_estudiosModel.CURSO" Width="1.5" PointX="0.5" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Sistema_estudiosModel.EXAMan" Width="1.5" PointX="3.25" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Sistema_estudiosModel.NOTA_EXAMEN" Width="1.5" PointX="6.25" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Sistema_estudiosModel.NOTA_TAREA" Width="1.5" PointX="5" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Sistema_estudiosModel.TAREA" Width="1.5" PointX="2" PointY="4.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Sistema_estudiosModel.USUARIO" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+      <Diagram DiagramId="8a245996c3584c4fb52c7565c1a7b272" Name="Diagram1">
+        <EntityTypeShape EntityType="Sistema_estudiosModel.ACTIVIDAD" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Sistema_estudiosModel.COMENTARIO" Width="1.5" PointX="5.25" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Sistema_estudiosModel.CURSO" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Sistema_estudiosModel.EXAMan" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="Sistema_estudiosModel.NOTA_EXAMEN" Width="1.5" PointX="5.25" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Sistema_estudiosModel.NOTA_TAREA" Width="1.5" PointX="5.25" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Sistema_estudiosModel.PUBLICACION" Width="1.5" PointX="3" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Sistema_estudiosModel.RES_EXAMEN" Width="1.5" PointX="8.25" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Sistema_estudiosModel.TAREA" Width="1.5" PointX="3" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Sistema_estudiosModel.USUARIO" Width="1.5" PointX="3" PointY="18.875" IsExpanded="true" />
+        <AssociationConnector Association="Sistema_estudiosModel.FK__ACTIVIDAD__curso__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="Sistema_estudiosModel.FK__COMENTARI__curso__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="Sistema_estudiosModel.FK__COMENTARI__estud__5812160E" ManuallyRouted="false" />
         <AssociationConnector Association="Sistema_estudiosModel.FK__CURSO__creador__3A81B327" ManuallyRouted="false" />
         <AssociationConnector Association="Sistema_estudiosModel.FK__EXAMEN__curso__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="Sistema_estudiosModel.FK__PUBLICACI__curso__5441852A" ManuallyRouted="false" />
         <AssociationConnector Association="Sistema_estudiosModel.FK__TAREA__curso__412EB0B6" ManuallyRouted="false" />
         <AssociationConnector Association="Sistema_estudiosModel.FK__NOTA_EXAM__exame__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="Sistema_estudiosModel.FK__RES_EXAME__exame__5AEE82B9" ManuallyRouted="false" />
         <AssociationConnector Association="Sistema_estudiosModel.FK__NOTA_EXAM__estud__4D94879B" ManuallyRouted="false" />
         <AssociationConnector Association="Sistema_estudiosModel.FK__NOTA_TARE__estud__45F365D3" ManuallyRouted="false" />
         <AssociationConnector Association="Sistema_estudiosModel.FK__NOTA_TARE__tarea__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="Sistema_estudiosModel.FK__RES_EXAME__estud__5BE2A6F2" ManuallyRouted="false" />
         <AssociationConnector Association="Sistema_estudiosModel.ASIGNACION" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="Sistema_estudiosModel.ACTIVIDAD" Width="1.5" PointX="2.75" PointY="12" />
-        <EntityTypeShape EntityType="Sistema_estudiosModel.COMENTARIO" Width="1.5" PointX="7.25" PointY="5.125" />
-        <EntityTypeShape EntityType="Sistema_estudiosModel.PUBLICACION" Width="1.5" PointX="2.75" PointY="14.75" />
-        <AssociationConnector Association="Sistema_estudiosModel.FK__ACTIVIDAD__curso__5DCAEF64" />
-        <AssociationConnector Association="Sistema_estudiosModel.FK__COMENTARI__curso__6383C8BA" />
-        <AssociationConnector Association="Sistema_estudiosModel.FK__COMENTARI__estud__6477ECF3" />
-        <AssociationConnector Association="Sistema_estudiosModel.FK__PUBLICACI__curso__60A75C0F" />
-        <EntityTypeShape EntityType="Sistema_estudiosModel.RES_EXAMEN" Width="1.5" PointX="7.5" PointY="8.25" />
-        <AssociationConnector Association="Sistema_estudiosModel.FK__RES_EXAME__exame__44FF419A" />
-        <AssociationConnector Association="Sistema_estudiosModel.FK__RES_EXAME__estud__45F365D3" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

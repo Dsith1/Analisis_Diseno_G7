@@ -17,30 +17,30 @@ namespace App_Estudios_G7.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CURSO()
         {
-            this.EXAMEN = new HashSet<EXAMan>();
-            this.TAREAs = new HashSet<TAREA>();
-            this.USUARIOs = new HashSet<USUARIO>();
             this.ACTIVIDADs = new HashSet<ACTIVIDAD>();
             this.COMENTARIOs = new HashSet<COMENTARIO>();
+            this.EXAMEN = new HashSet<EXAMan>();
             this.PUBLICACIONs = new HashSet<PUBLICACION>();
+            this.TAREAs = new HashSet<TAREA>();
+            this.USUARIOs = new HashSet<USUARIO>();
         }
     
         public int id_curso { get; set; }
         public string nombre { get; set; }
         public int creador { get; set; }
     
-        public virtual USUARIO USUARIO { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EXAMan> EXAMEN { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TAREA> TAREAs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<USUARIO> USUARIOs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ACTIVIDAD> ACTIVIDADs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<COMENTARIO> COMENTARIOs { get; set; }
+        public virtual USUARIO USUARIO { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EXAMan> EXAMEN { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PUBLICACION> PUBLICACIONs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TAREA> TAREAs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<USUARIO> USUARIOs { get; set; }
     }
 }

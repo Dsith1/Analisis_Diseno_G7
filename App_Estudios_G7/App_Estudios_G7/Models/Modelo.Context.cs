@@ -27,23 +27,45 @@ namespace App_Estudios_G7.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<ACTIVIDAD> ACTIVIDADs { get; set; }
+        public virtual DbSet<COMENTARIO> COMENTARIOs { get; set; }
         public virtual DbSet<CURSO> CURSOes { get; set; }
         public virtual DbSet<EXAMan> EXAMEN { get; set; }
         public virtual DbSet<NOTA_EXAMEN> NOTA_EXAMEN { get; set; }
         public virtual DbSet<NOTA_TAREA> NOTA_TAREA { get; set; }
-        public virtual DbSet<TAREA> TAREAs { get; set; }
-        public virtual DbSet<USUARIO> USUARIOs { get; set; }
-        public virtual DbSet<ACTIVIDAD> ACTIVIDADs { get; set; }
-        public virtual DbSet<COMENTARIO> COMENTARIOs { get; set; }
         public virtual DbSet<PUBLICACION> PUBLICACIONs { get; set; }
         public virtual DbSet<RES_EXAMEN> RES_EXAMEN { get; set; }
+        public virtual DbSet<TAREA> TAREAs { get; set; }
+        public virtual DbSet<USUARIO> USUARIOs { get; set; }
+    
+        public virtual ObjectResult<BUSCAR_CURSO_Result> BUSCAR_CURSO(string name)
+        {
+            var nameParameter = name != null ?
+                new ObjectParameter("name", name) :
+                new ObjectParameter("name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BUSCAR_CURSO_Result>("BUSCAR_CURSO", nameParameter);
+        }
     
         public virtual ObjectResult<string> BUSCAR_USUARIOS()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("BUSCAR_USUARIOS");
         }
     
-        public virtual int NUEVO_USER(string nuevo_Nick, string nuevo_contra, string nuevo_nombre_1, string nuevo_nombre_2, string nuevo_apellido_1, string nuevo_apellido_2, Nullable<int> nuevo_edad, string nuevo_correo)
+        public virtual int INSERTAR_CURSO(string name, Nullable<int> autor)
+        {
+            var nameParameter = name != null ?
+                new ObjectParameter("name", name) :
+                new ObjectParameter("name", typeof(string));
+    
+            var autorParameter = autor.HasValue ?
+                new ObjectParameter("autor", autor) :
+                new ObjectParameter("autor", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("INSERTAR_CURSO", nameParameter, autorParameter);
+        }
+    
+        public virtual int NUEVO_USER(string nuevo_Nick, string nuevo_contra, string nuevo_nombre_1, string nuevo_nombre_2, string nuevo_apellido_1, string nuevo_apellido_2, Nullable<int> nuevo_edad, string nuevo_correo, string nuevo_rol)
         {
             var nuevo_NickParameter = nuevo_Nick != null ?
                 new ObjectParameter("Nuevo_Nick", nuevo_Nick) :
@@ -77,7 +99,16 @@ namespace App_Estudios_G7.Models
                 new ObjectParameter("Nuevo_correo", nuevo_correo) :
                 new ObjectParameter("Nuevo_correo", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("NUEVO_USER", nuevo_NickParameter, nuevo_contraParameter, nuevo_nombre_1Parameter, nuevo_nombre_2Parameter, nuevo_apellido_1Parameter, nuevo_apellido_2Parameter, nuevo_edadParameter, nuevo_correoParameter);
+            var nuevo_rolParameter = nuevo_rol != null ?
+                new ObjectParameter("Nuevo_rol", nuevo_rol) :
+                new ObjectParameter("Nuevo_rol", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("NUEVO_USER", nuevo_NickParameter, nuevo_contraParameter, nuevo_nombre_1Parameter, nuevo_nombre_2Parameter, nuevo_apellido_1Parameter, nuevo_apellido_2Parameter, nuevo_edadParameter, nuevo_correoParameter, nuevo_rolParameter);
+        }
+    
+        public virtual ObjectResult<OBTENER_CURSOS_Result> OBTENER_CURSOS()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<OBTENER_CURSOS_Result>("OBTENER_CURSOS");
         }
     }
 }

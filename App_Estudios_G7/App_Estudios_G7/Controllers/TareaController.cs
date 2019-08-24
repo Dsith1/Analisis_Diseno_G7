@@ -66,7 +66,7 @@ namespace App_Estudios_G7.Controllers
                             new SqlParameter("@enunciado", tAREA.Enunciado),
                             new SqlParameter("@entrega", tAREA.Entrega),
                             new SqlParameter("@curso", tAREA.curso),
-                            new SqlParameter("@ponderacion", tAREA.Ponderacion)
+                            new SqlParameter("@ponderacion", tAREA.ponderacion)
                         );
                     }
 

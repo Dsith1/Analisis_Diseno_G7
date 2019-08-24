@@ -108,7 +108,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\App_Estudios_G7\App_Estudios_G7.csproj">
-      <Project>{D6B43AFD-3DCA-461E-AED2-9A167AF4264D}</Project>
+      <Project>{d6b43afd-3dca-461e-aed2-9a167af4264d}</Project>
       <Name>App_Estudios_G7</Name>
     </ProjectReference>
   </ItemGroup>
