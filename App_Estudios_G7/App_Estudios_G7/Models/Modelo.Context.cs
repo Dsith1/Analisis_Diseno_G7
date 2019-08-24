@@ -36,6 +36,7 @@ namespace App_Estudios_G7.Models
         public virtual DbSet<ACTIVIDAD> ACTIVIDADs { get; set; }
         public virtual DbSet<COMENTARIO> COMENTARIOs { get; set; }
         public virtual DbSet<PUBLICACION> PUBLICACIONs { get; set; }
+        public virtual DbSet<RES_EXAMEN> RES_EXAMEN { get; set; }
     
         public virtual ObjectResult<string> BUSCAR_USUARIOS()
         {

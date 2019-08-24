@@ -22,6 +22,7 @@ namespace App_Estudios_G7.Models
             this.NOTA_TAREA = new HashSet<NOTA_TAREA>();
             this.CURSOes1 = new HashSet<CURSO>();
             this.COMENTARIOs = new HashSet<COMENTARIO>();
+            this.RES_EXAMEN = new HashSet<RES_EXAMEN>();
         }
     
         public int id_usuario { get; set; }
@@ -45,5 +46,7 @@ namespace App_Estudios_G7.Models
         public virtual ICollection<CURSO> CURSOes1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<COMENTARIO> COMENTARIOs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RES_EXAMEN> RES_EXAMEN { get; set; }
     }
 }
