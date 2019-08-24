@@ -139,18 +139,33 @@ namespace App_Estudios_G7.Controllers
         /*
          * Controlador que me retorna el detalle del contenido de un curso, busco cada cosa con el id que mando
          */
-         public ActionResult ContenidoCurso(int id_curso)
+         public ActionResult ContenidoCurso(int id)
         {
             //listas de examenes, tareas, actividades (Ubicacion: Models/ViewModels )
             List<ListaExamen> listaExamen = new List<ListaExamen>();
-            //List<ListaTareas> listaTareas = new List<ListaTareas>();
-            //List<ListaActividad> listaActividades = new List<ListaActividad>();
+            List<ListaTareas> listaTareas = new List<ListaTareas>();
+            List<ListaActividad> listaActividades = new List<ListaActividad>();
+
+            //querys para llenar las listas
+            string query_examen =   "Select id_examen, preguntas, fecha, minutos from EXAMEN Where curso =  "
+                                    + id
+                                    + ";";
+
+            string query_tarea =    "Select id_tarea, enunciado, entrega from TAREA Where curso = "
+                                    + id
+                                    + ";";
+
+            string query_actividad =    "Select id_Actividad, tipo, id_evento from ACTIVIDAD Where curso = "
+                                        + id
+                                        + ";";
 
             try
             {
                 using (Sistema_estudiosEntities db = new Sistema_estudiosEntities())
                 {
-                    listaExamen = db.Database.SqlQuery<ListaCursos>("OBTENER_CURSOS").ToList();
+                    listaExamen = db.Database.SqlQuery<ListaExamen>(query_examen).ToList();
+                    listaTareas = db.Database.SqlQuery<ListaTareas>(query_tarea).ToList();
+                    listaActividades = db.Database.SqlQuery<ListaActividad>(query_actividad).ToList();
                 }
             }
             catch (Exception ex)
@@ -158,7 +173,13 @@ namespace App_Estudios_G7.Controllers
                 throw new Exception("Error al buscar la lista: ", ex);
             }
 
-            return View(listaExamen);
+            //viewbag es una list de parametros que se le pasa a la vista
+            ViewBag.examenes = listaExamen;
+            ViewBag.tareas = listaTareas;
+            ViewBag.actividades = listaActividades;
+
+            //y ahora mando el view
+            return View();
         }
 
         /**
