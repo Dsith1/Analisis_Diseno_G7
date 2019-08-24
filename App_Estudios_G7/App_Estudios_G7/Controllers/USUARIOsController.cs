@@ -17,7 +17,11 @@ namespace App_Estudios_G7.Controllers
         // GET: USUARIOs
         public ActionResult Index()
         {
-            return View(db.USUARIOs.ToList());
+            //cambiando unas cosas para hacer la conversion de usuarios mas claro
+            var USUARIOS_VIEW = db.USUARIOs.ToList();
+
+            //Retorno una vista de usurio
+            return View(USUARIOS_VIEW);
         }
 
         // GET: USUARIOs/Details/5
