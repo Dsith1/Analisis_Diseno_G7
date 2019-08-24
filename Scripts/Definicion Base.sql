@@ -12,7 +12,8 @@ Create Table USUARIO(
 	apellido_1 varchar(20),
 	apellido_2 varchar(20) not null,
 	edad int not null,
-	correo	varchar(20) not null
+	correo	varchar(20) not null,
+	rol varchar(20) not null,
 
 );
 

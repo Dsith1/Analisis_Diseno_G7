@@ -34,6 +34,7 @@ namespace App_Estudios_G7.Models
         public string apellido_2 { get; set; }
         public int edad { get; set; }
         public string correo { get; set; }
+        public string rol { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CURSO> CURSOes { get; set; }
