@@ -1,0 +1,73 @@
+﻿@model App_Estudios_G7.Models.TAREA
+
+@{
+    ViewBag.Title = "CargarTarea";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CargarTarea</h2>
+<br />
+
+<h2 class="text-danger">@ViewBag.Error</h2>
+<h2 class="text-success">@ViewBag.Confirmacion</h2>
+
+<br />
+
+
+<div>
+    <hr />
+    <form method="post" enctype="multipart/form-data">
+        <dl class="dl-horizontal">
+            <dt>
+                Enunciado
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Enunciado)
+            </dd>
+
+            <dt>
+                Entrega
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Entrega)
+            </dd>
+
+            <dt> Ponderacion </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Ponderacion)
+            </dd>
+
+            <dt> Curso </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CURSO1.nombre)
+            </dd>
+
+            <dt> Cargar Archivo </dt>
+
+            @if ( DateTime.Compare(Model.Entrega, DateTime.Now) > 0 )
+            {
+                <dd>
+                    <input type="file" name="fileTarea" multiple>
+                </dd>
+                <dt></dt>
+                <dd>
+                    <br />
+                    <button type="submit" class="btn btn-success">Cargar Tarea</button>
+                </dd>
+            }
+            else
+            {
+                <dd>
+                    La tarea se ha vencido
+                </dd>
+            }
+
+
+        </dl>
+    </form>
+</div>
+

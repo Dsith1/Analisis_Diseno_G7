@@ -17,11 +17,12 @@ namespace App_Estudios_G7.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public USUARIO()
         {
+            this.COMENTARIOs = new HashSet<COMENTARIO>();
             this.CURSOes = new HashSet<CURSO>();
             this.NOTA_EXAMEN = new HashSet<NOTA_EXAMEN>();
             this.NOTA_TAREA = new HashSet<NOTA_TAREA>();
+            this.RES_EXAMEN = new HashSet<RES_EXAMEN>();
             this.CURSOes1 = new HashSet<CURSO>();
-            this.COMENTARIOs = new HashSet<COMENTARIO>();
         }
     
         public int id_usuario { get; set; }
@@ -36,14 +37,16 @@ namespace App_Estudios_G7.Models
         public string rol { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<COMENTARIO> COMENTARIOs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CURSO> CURSOes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NOTA_EXAMEN> NOTA_EXAMEN { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NOTA_TAREA> NOTA_TAREA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CURSO> CURSOes1 { get; set; }
+        public virtual ICollection<RES_EXAMEN> RES_EXAMEN { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<COMENTARIO> COMENTARIOs { get; set; }
+        public virtual ICollection<CURSO> CURSOes1 { get; set; }
     }
 }

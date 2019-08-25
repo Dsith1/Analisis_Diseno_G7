@@ -1,7 +1,7 @@
 Create DATABASE Sistema_estudios;
 Use Sistema_estudios;
 
-
+drop database Sistema_estudios;
 Create Table USUARIO(
 
 	id_usuario int identity primary key,
@@ -39,9 +39,10 @@ Create Table ASIGNACION(
 Create Table TAREA(
 	
 	id_tarea int identity primary key,
-	Enunciado varchar (20) not null,
+	Enunciado varchar (300) not null,
 	Entrega datetime not null,
 	curso int not null,	
+	ponderacion decimal(5,2),
 	foreign key(curso) references CURSO(id_curso)
 	
 );
@@ -55,7 +56,7 @@ Create Table NOTA_TAREA(
 	foreign key(tarea) references TAREA(id_tarea),
 	foreign key(estudiante) references USUARIO(id_usuario)
 
-)
+);
 
 Create Table EXAMEN(
 	
@@ -78,7 +79,7 @@ Create Table NOTA_EXAMEN(
 	foreign key(examen) references EXAMEN(id_examen),
 	foreign key(estudiante) references USUARIO(id_usuario)
 
-)
+);
 
 Create Table ACTIVIDAD(
 
@@ -95,7 +96,7 @@ Create Table PUBLICACION(
 	info varchar(max),
 	curso int not null,
 	foreign key(curso) references CURSO(id_curso)
-)
+);
 
 Create Table COMENTARIO(
 
@@ -106,12 +107,15 @@ Create Table COMENTARIO(
 	foreign key(curso) references CURSO(id_curso),
 	foreign key(estudiante) references USUARIO(id_usuario)
 
-)
+);
 
 create Table RES_EXAMEN(
 	examen int,
 	estudiante int,
 	respuestas varchar(max),
-	foreign key(examen) references CURSO(id_examen),
-	foreign key(estudiante) references USUARIO(id_usuario)
+	foreign key(examen) references EXAMEN(id_examen),
+
+	foreign key(estudiante) references USUARIO(id_usuario),
+	primary key(examen,estudiante)
+
 );

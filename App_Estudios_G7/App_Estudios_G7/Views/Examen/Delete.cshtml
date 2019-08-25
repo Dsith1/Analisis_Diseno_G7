@@ -1,0 +1,57 @@
+﻿@model App_Estudios_G7.Models.EXAMan
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>ELIMINAR</h2>
+
+<h3>¿Esta seguro de eliminar este elemento?</h3>
+<div>
+    <h4>EXAMEN</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.preguntas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.preguntas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.minutos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.minutos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CURSO1.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CURSO1.nombre)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Regresar", "Index")
+        </div>
+    }
+</div>

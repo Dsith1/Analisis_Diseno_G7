@@ -24,6 +24,7 @@ namespace App_Estudios_G7.Models
         public string Enunciado { get; set; }
         public System.DateTime Entrega { get; set; }
         public int curso { get; set; }
+        public Nullable<decimal> ponderacion { get; set; }
     
         public virtual CURSO CURSO1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

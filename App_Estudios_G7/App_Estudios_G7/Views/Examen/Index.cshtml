@@ -1,0 +1,53 @@
+﻿@model IEnumerable<App_Estudios_G7.Models.EXAMan>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>LISTADO GENERAL DE EXAMENES</h2>
+
+<p>
+    @Html.ActionLink("CREAR NUEVO EXAMEN", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.preguntas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.minutos)
+        </th>
+        <th>
+            Nombre del Curso
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.preguntas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.minutos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CURSO1.nombre)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.id_examen }) |
+                @Html.ActionLink("Detalles", "Details", new { id = item.id_examen }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.id_examen })
+            </td>
+        </tr>
+    }
+
+</table>
+
