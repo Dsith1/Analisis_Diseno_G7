@@ -22,7 +22,7 @@ namespace App_Estudios_G7.Controllers
         }
         void conectionString()
         {
-            con.ConnectionString = "data source=HILBERTPC; database=Sistema_estudios; integrated security = SSPI;";
+            con.ConnectionString = "data source=LAPTOP-IFGR27P8; database=Sistema_estudios; integrated security = SSPI;";
         }
         [HttpPost]
         public ActionResult Verificar(Cuenta cu)
@@ -47,6 +47,25 @@ namespace App_Estudios_G7.Controllers
                 }
             }
             else if (cu.Rol.Equals("Estudiante"))
+            {
+                conectionString();
+                con.Open();
+                com.Connection = con;
+                com.CommandText = "select * from USUARIO where nick='" + cu.Name + "' and contra='" + cu.Password + "' and rol ='" + cu.Rol + "'";
+                dr = com.ExecuteReader();
+                if (dr.Read())
+                {
+                    con.Close();
+                    return RedirectToAction("Index", "Home");
+                }
+
+                else
+                {
+                    con.Close();
+                    return View("Error");
+                }
+            }
+            else if (cu.Rol.Equals("Maestro"))
             {
                 conectionString();
                 con.Open();
