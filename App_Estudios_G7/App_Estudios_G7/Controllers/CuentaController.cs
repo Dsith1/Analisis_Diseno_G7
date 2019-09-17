@@ -93,5 +93,12 @@ namespace App_Estudios_G7.Controllers
 
             return View();
         }
+
+        public bool VerificarRegistro()
+        {
+            ViewBag.Message = "Verificar registro";
+
+            return true;
+        }
     }
 }
