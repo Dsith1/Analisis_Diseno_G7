@@ -48,7 +48,7 @@ namespace App_Estudios_G7.Tests.Controllers
             CuentaController controller = new CuentaController();
 
             // Act
-            bool result = controller.VerificarRegistro();
+            bool result = controller.VerificarRegistro("usuario");
 
             // Assert
             Assert.IsNotNull(result);
