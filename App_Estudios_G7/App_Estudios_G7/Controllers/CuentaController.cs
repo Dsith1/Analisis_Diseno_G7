@@ -22,7 +22,7 @@ namespace App_Estudios_G7.Controllers
         }
         void conectionString()
         {
-            con.ConnectionString = "data source=DESKTOP-K27HD4T\\SQLEXPRESS; database=Sistema_estudios; integrated security = true;";
+            con.ConnectionString = "data source=LAPTOP-IFGR27P8; database=Sistema_estudios; integrated security = true;";
         }
         [HttpPost]
         public ActionResult Verificar(Cuenta cu)

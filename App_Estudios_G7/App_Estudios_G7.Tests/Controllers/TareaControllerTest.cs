@@ -63,7 +63,7 @@ namespace App_Estudios_G7.Tests.Controllers
 
             // Act
             ViewResult result = tarea.TareaCreate(new Models.TAREA
-            { Enunciado = "nuevo", Entrega = new DateTime(2019, 08, 22), curso = 1, Ponderacion = 0 }
+            { Enunciado = "nuevo", Entrega = new DateTime(2019, 08, 22), curso = 1, ponderacion = 0 }
             ) as ViewResult;
 
             // Assert
