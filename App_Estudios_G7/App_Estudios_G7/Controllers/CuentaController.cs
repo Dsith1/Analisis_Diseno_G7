@@ -22,7 +22,7 @@ namespace App_Estudios_G7.Controllers
         }
         void conectionString()
         {
-            con.ConnectionString = "data source=LAPTOP-IFGR27P8; database=Sistema_estudios; integrated security = true;";
+            con.ConnectionString = "data source=DESKTOP-K27HD4T\\SQLEXPRESS; database=Sistema_estudios; integrated security = true;";
         }
         [HttpPost]
         public ActionResult Verificar(Cuenta cu)
@@ -98,10 +98,9 @@ namespace App_Estudios_G7.Controllers
         [HttpPost]
         public ActionResult Registrarse(USUARIO usu)
         {
-            ViewBag.Message = "Registrate :D";
-            string query = "INSERT INTO usuario(nick,contra,nombre_1,nombre_2,apellido_1,apellido_2, edad,correo)" + 
+            string query = "INSERT INTO usuario(nick,contra,nombre_1,nombre_2,apellido_1,apellido_2, edad,correo,rol)" + 
                             " values('"+usu.nick+"', '"+usu.contra+"', '"+usu.nombre_1+"', '"+usu.nombre_2+"'," +
-                            " '" + usu.apellido_1 + "', '" + usu.apellido_2+"', "+usu.edad+", '"+usu.correo+"');";
+                            " '" + usu.apellido_1 + "', '" + usu.apellido_2+"', "+usu.edad+", '"+usu.correo+ "', '" + usu.rol + "');";
             try
             {
                 if (!VerificarRegistro(usu.nick))
