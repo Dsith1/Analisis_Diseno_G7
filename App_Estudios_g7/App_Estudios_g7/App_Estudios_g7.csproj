@@ -146,6 +146,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AsignacionController.cs" />
     <Compile Include="Controllers\CargaArchivo.cs" />
     <Compile Include="Controllers\CursoController.cs" />
     <Compile Include="Controllers\CuentaController.cs" />
@@ -334,6 +335,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Temp\" />
+    <Folder Include="Views\Asignacion\" />
     <Folder Include="Views\Default\" />
     <Folder Include="Views\prueba\" />
   </ItemGroup>
