@@ -22,12 +22,12 @@ namespace App_Estudios_G7.Controllers
         }
         void conectionString()
         {
-            con.ConnectionString = "data source=DESKTOP-K27HD4T\\SQLEXPRESS; database=Sistema_estudios; integrated security = true;";
+            con.ConnectionString = "data source=HILBERTPC; database=Sistema_estudios; integrated security = true;";
         }
         [HttpPost]
         public ActionResult Verificar(Cuenta cu)
         {
-            if(cu.Rol.Equals("Administrador"))
+            if (cu.Rol.Equals("Administrador"))
             {
                 conectionString();
                 con.Open();
@@ -85,7 +85,7 @@ namespace App_Estudios_G7.Controllers
                 }
             }
             return View();
-            
+
         }
 
         public ActionResult Registrarse()
@@ -98,9 +98,9 @@ namespace App_Estudios_G7.Controllers
         [HttpPost]
         public ActionResult Registrarse(USUARIO usu)
         {
-            string query = "INSERT INTO usuario(nick,contra,nombre_1,nombre_2,apellido_1,apellido_2, edad,correo,rol)" + 
-                            " values('"+usu.nick+"', '"+usu.contra+"', '"+usu.nombre_1+"', '"+usu.nombre_2+"'," +
-                            " '" + usu.apellido_1 + "', '" + usu.apellido_2+"', "+usu.edad+", '"+usu.correo+ "', '" + usu.rol + "');";
+            string query = "INSERT INTO usuario(nick,contra,nombre_1,nombre_2,apellido_1,apellido_2, edad,correo,rol)" +
+                            " values('" + usu.nick + "', '" + usu.contra + "', '" + usu.nombre_1 + "', '" + usu.nombre_2 + "'," +
+                            " '" + usu.apellido_1 + "', '" + usu.apellido_2 + "', " + usu.edad + ", '" + usu.correo + "', '" + usu.rol + "');";
             try
             {
                 if (!VerificarRegistro(usu.nick))
@@ -110,7 +110,7 @@ namespace App_Estudios_G7.Controllers
                     com.Connection = con;
                     com.CommandText = query;
                     dr = com.ExecuteReader();
-                    
+
                     ViewBag.Consulta = "Usuario ingresado exitosamente.";
 
                     con.Close();
@@ -129,7 +129,7 @@ namespace App_Estudios_G7.Controllers
         public bool VerificarRegistro(string nick)
         {
             ViewBag.Message = "Verificar registro";
-            string query = "SELECT * FROM USUARIO WHERE nick = '"+ nick +"' ;";
+            string query = "SELECT * FROM USUARIO WHERE nick = '" + nick + "' ;";
             try
             {
                 conectionString();
@@ -156,5 +156,6 @@ namespace App_Estudios_G7.Controllers
             }
 
         }
+
     }
 }
