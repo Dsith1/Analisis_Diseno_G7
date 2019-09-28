@@ -262,7 +262,10 @@
     <Content Include="Models\Modelo.edmx.diagram">
       <DependentUpon>Modelo.edmx</DependentUpon>
     </Content>
-    <Content Include="BDDIniciarSesion.feature" />
+    <Content Include="Feature_Files\BDDCuentaController.feature" />
+    <Content Include="Feature_Files\BDDCursoController.feature" />
+    <Content Include="Feature_Files\BDDExamenController.feature" />
+    <Content Include="Feature_Files\BDDTareaController.feature" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
