@@ -9,7 +9,7 @@ namespace App_Estudios_G7.Controllers
     public class AsignacionController : Controller
     {
         // GET: Asignacion
-        public ActionResult Index()
+        public ActionResult AsignacionCursos()
         {
             return View();
         }
