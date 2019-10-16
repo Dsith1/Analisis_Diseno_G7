@@ -16,6 +16,7 @@ namespace App_Estudios_G7.Controllers
             {
                 filetarea.SaveAs(ruta);
                 Confirmacion = "Se guardo la tarea";
+                jenkins = "estoy probando jenkins";
             }
             catch(Exception ex)
             {
