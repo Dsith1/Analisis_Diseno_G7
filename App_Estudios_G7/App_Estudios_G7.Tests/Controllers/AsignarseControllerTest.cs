@@ -18,8 +18,6 @@ namespace App_Estudios_G7.Tests.Controllers
             //Assert
             //Assert.IsNotNull(result);
             
-            //ahhhhhh
-            //una prueba mas
         }
     }
 }
