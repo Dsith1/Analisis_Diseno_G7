@@ -22,12 +22,12 @@ namespace App_Estudios_G7.Controllers
         }
         void conectionString()
         {
-            con.ConnectionString = "data source=LAPTOP-IFGR27P8; database=Sistema_estudios; integrated security = SSPI;";
+            con.ConnectionString = "data source=HILBERTPC; database=Sistema_estudios; integrated security = true;";
         }
         [HttpPost]
         public ActionResult Verificar(Cuenta cu)
         {
-            if(cu.Rol.Equals("Administrador"))
+            if (cu.Rol.Equals("Administrador"))
             {
                 conectionString();
                 con.Open();
@@ -85,8 +85,9 @@ namespace App_Estudios_G7.Controllers
                 }
             }
             return View();
-            
+
         }
+
         public ActionResult Registrarse()
         {
             ViewBag.Message = "Registrate :D";
@@ -94,11 +95,67 @@ namespace App_Estudios_G7.Controllers
             return View();
         }
 
-        public bool VerificarRegistro()
+        [HttpPost]
+        public ActionResult Registrarse(USUARIO usu)
+        {
+            string query = "INSERT INTO usuario(nick,contra,nombre_1,nombre_2,apellido_1,apellido_2, edad,correo,rol)" +
+                            " values('" + usu.nick + "', '" + usu.contra + "', '" + usu.nombre_1 + "', '" + usu.nombre_2 + "'," +
+                            " '" + usu.apellido_1 + "', '" + usu.apellido_2 + "', " + usu.edad + ", '" + usu.correo + "', '" + usu.rol + "');";
+            try
+            {
+                if (!VerificarRegistro(usu.nick))
+                {
+                    conectionString();
+                    con.Open();
+                    com.Connection = con;
+                    com.CommandText = query;
+                    dr = com.ExecuteReader();
+
+                    ViewBag.Consulta = "Usuario ingresado exitosamente.";
+
+                    con.Close();
+                }
+                else ViewBag.Consulta = "El nickname ya existe";
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al insertar el usuario: ", ex);
+            }
+
+            return View();
+        }
+
+
+        public bool VerificarRegistro(string nick)
         {
             ViewBag.Message = "Verificar registro";
+            string query = "SELECT * FROM USUARIO WHERE nick = '" + nick + "' ;";
+            try
+            {
+                conectionString();
+                con.Open();
+                com.Connection = con;
+                com.CommandText = query;
+                dr = com.ExecuteReader();
+                if (dr.Read())
+                {
+                    con.Close();
+                    return true;
+                }
 
-            return true;
+                else
+                {
+                    con.Close();
+                    return false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al insertar el usuario: ", ex);
+            }
+
         }
+
     }
 }
