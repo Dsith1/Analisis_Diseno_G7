@@ -1,0 +1,12 @@
+CREATE PROCEDURE OBTENER_CURSOS_ASIGNADOS
+	@USUARIO int
+AS    
+   SET NOCOUNT ON;  
+   SELECT id_curso,nombre
+   from CURSO
+   Where EXISTS (
+		SELECT id_curso
+		FROM ASIGNACION
+		WHERE id_usuario=@USUARIO);
+   
+GO
