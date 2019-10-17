@@ -53,6 +53,10 @@ namespace App_Estudios_G7.Controllers
         [HttpPost]
         public ActionResult CrearCurso(CURSO model)
         {
+            string rol = Session["Rol"];// variable seteada en el login
+            if(rol != null && rol.Equals("Maestro") == false)
+                return Redirect("/Curso/CursoIndex");
+
             try
             {
                 if (ModelState.IsValid)
@@ -72,7 +76,6 @@ namespace App_Estudios_G7.Controllers
             {
                 throw new Exception(ex.Message);
             }
-
 
             ViewBag.creador = new SelectList(BD.USUARIOs, "id_usuario", "nick", model.creador);
             return View(model);

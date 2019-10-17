@@ -37,6 +37,7 @@ namespace App_Estudios_G7.Controllers
                 if (dr.Read())
                 {
                     con.Close();
+                    Session["Rol"] = "Administrador";
                     return RedirectToAction("CrearCurso", "Curso");
                 }
 
@@ -56,6 +57,7 @@ namespace App_Estudios_G7.Controllers
                 if (dr.Read())
                 {
                     con.Close();
+                    Session["Rol"] = "Estudiante";
                     return RedirectToAction("Index", "Home");
                 }
 
@@ -75,6 +77,7 @@ namespace App_Estudios_G7.Controllers
                 if (dr.Read())
                 {
                     con.Close();
+                    Session["Rol"] = "Maestro";
                     return RedirectToAction("Index", "Home");
                 }
 
@@ -142,7 +145,6 @@ namespace App_Estudios_G7.Controllers
                     con.Close();
                     return true;
                 }
-
                 else
                 {
                     con.Close();
