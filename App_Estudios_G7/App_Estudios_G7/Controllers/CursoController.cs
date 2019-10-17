@@ -53,7 +53,7 @@ namespace App_Estudios_G7.Controllers
         [HttpPost]
         public ActionResult CrearCurso(CURSO model)
         {
-            string rol = Session["Rol"];// variable seteada en el login
+            string rol = Session["Rol"].ToString();// variable seteada en el login
             if(rol != null && rol.Equals("Maestro") == false)
                 return Redirect("/Curso/CursoIndex");
 

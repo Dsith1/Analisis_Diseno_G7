@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using App_Estudios_G7;
 
 namespace App_Estudios_G7.Tests.Controllers
 {
@@ -8,8 +9,10 @@ namespace App_Estudios_G7.Tests.Controllers
     {
         [TestMethod]
         public void Desasignacion_Falla_Conexion()
-        {
+        {            
             Asignaciones asignaciones = new Asignaciones();
+
+            asignaciones.cadena = "Coneccion Fallida";
 
             bool exito = asignaciones.Abrir_conn();
 
