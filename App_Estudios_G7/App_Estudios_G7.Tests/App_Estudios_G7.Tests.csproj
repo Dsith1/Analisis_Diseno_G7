@@ -147,6 +147,7 @@
     <Compile Include="Controllers\RegistrarseControllerTest.cs" />
     <Compile Include="Controllers\TareaControllerTest.cs" />
     <Compile Include="Controllers\PublicacionControllerTest.cs" />
+    <Compile Include="Controllers\DesasignacionTest.cs" />
     <Compile Include="Controllers\UsuariosControllerTest.cs" />
     <Compile Include="Features\CuentaIniciarSesion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
