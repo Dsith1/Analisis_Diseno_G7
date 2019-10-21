@@ -20,12 +20,12 @@ namespace App_Estudios_G7.Tests.Features
         [Label("Empty")]
         public void Empty_stack()
         {
-            Runner.RunScenario(
+            //Runner.RunScenario(
 
-                given => conexion_base_de_datos_Sistema_estudios(),
-                and => Hago_verificaciones_diferentes_roles(),
-                when => datos_correctos(),
-                then => redirije_paginacorrespondiente());
+                //given => conexion_base_de_datos_Sistema_estudios(),
+                //and => Hago_verificaciones_diferentes_roles(),
+                //when => datos_correctos(),
+                //then => redirije_paginacorrespondiente());
         }
     }
 }

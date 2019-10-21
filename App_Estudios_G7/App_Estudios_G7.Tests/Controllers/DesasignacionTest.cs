@@ -19,5 +19,18 @@ namespace App_Estudios_G7.Tests.Controllers
             Assert.IsFalse(exito);
 
         }
+
+        [TestMethod]
+        public void Desasignacion_Conexion_Exitosa()
+        {
+            Asignaciones asignaciones = new Asignaciones();
+
+            asignaciones.cadena = "data source=LAPTOP-IFGR27P8;initial catalog=Sistema_estudios;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
+
+            bool exito = asignaciones.Abrir_conn();
+
+            Assert.IsTrue(exito);
+
+        }
     }
 }
