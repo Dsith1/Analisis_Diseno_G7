@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -33,6 +34,41 @@ namespace App_Estudios_G7
                 return false;
             }
             
+        }
+
+        public bool Verificar_curso(int curso)
+        {
+
+            string resultado="";
+            try
+            {
+                Abrir_conn();
+
+                cmd = new SqlCommand("BUSCAR_CURSO_INDIVIDUAL", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@curso ", curso);
+                SqlDataReader lector = cmd.ExecuteReader();
+                
+
+                while (lector.Read())
+                {
+                    resultado = lector["id_curso"].ToString();
+                }
+
+                if (resultado.Equals(curso.ToString()))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+            }catch(Exception ex)
+            {
+                return false;
+            }
+
         }
     }
 }
