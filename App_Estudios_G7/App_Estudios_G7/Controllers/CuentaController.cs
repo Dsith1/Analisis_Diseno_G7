@@ -98,6 +98,7 @@ namespace App_Estudios_G7.Controllers
             return View();
         }
 
+        //Accion del boton al registrarse
         [HttpPost]
         public ActionResult Registrarse(USUARIO usu)
         {
@@ -131,7 +132,7 @@ namespace App_Estudios_G7.Controllers
 
         public bool VerificarRegistro(string nick)
         {
-            ViewBag.Message = "Verificar registro";
+            //ViewBag.Message = "Verificar registro";
             string query = "SELECT * FROM USUARIO WHERE nick = '" + nick + "' ;";
             try
             {
@@ -159,5 +160,36 @@ namespace App_Estudios_G7.Controllers
 
         }
 
+        //METODO PARA REALIZAR PRUEBAS
+        public string PruebaRegistrarse(string nick, string contra, string nombre_1, string nombre_2, string apellido_1, string apellido_2, string edad, string correo, string rol)
+        {
+            string query = "INSERT INTO usuario(nick,contra,nombre_1,nombre_2,apellido_1,apellido_2, edad,correo,rol)" +
+                            " values('" + nick + "', '" + contra + "', '" + nombre_1 + "', '" + nombre_2 + "'," +
+                            " '" + apellido_1 + "', '" + apellido_2 + "', " + edad + ", '" + correo + "', '" + rol + "');";
+            try
+            {
+                if (!VerificarRegistro(nick))
+                {
+                    conectionString();
+                    con.Open();
+                    com.Connection = con;
+                    com.CommandText = query;
+                    dr = com.ExecuteReader();
+
+                    Console.WriteLine("Usuario ingresado Exitosamente");
+                    //ViewBag.Consulta = "Usuario ingresado exitosamente.";
+
+                    con.Close();
+                }
+                else //ViewBag.Consulta = "El nickname ya existe";
+                    Console.WriteLine("El nickname ya existe");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al insertar el usuario: ", ex);
+            }
+
+            return "Correcto";
+        }
     }
 }
