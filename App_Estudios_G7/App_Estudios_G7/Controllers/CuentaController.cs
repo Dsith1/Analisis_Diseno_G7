@@ -22,7 +22,7 @@ namespace App_Estudios_G7.Controllers
         }
         void conectionString()
         {
-            con.ConnectionString = "data source=HILBERTPC; database=Sistema_estudios; integrated security = true;";
+            con.ConnectionString = "data source=SERGIO\\SERGIO; database=Sistema_estudios; integrated security = true;";
         }
         [HttpPost]
         public ActionResult Verificar(Cuenta cu)
@@ -155,21 +155,24 @@ namespace App_Estudios_G7.Controllers
             }
             catch (Exception ex)
             {
+                return false;
                 throw new Exception("Error al insertar el usuario: ", ex);
             }
 
         }
 
         //METODO PARA REALIZAR PRUEBAS
-        public string PruebaRegistrarse(string nick, string contra, string nombre_1, string nombre_2, string apellido_1, string apellido_2, string edad, string correo, string rol)
+        public bool PruebaRegistrarse(string nick, string contra, string nombre_1, string nombre_2, string apellido_1, string apellido_2, string edad, string correo, string rol)
         {
             string query = "INSERT INTO usuario(nick,contra,nombre_1,nombre_2,apellido_1,apellido_2, edad,correo,rol)" +
                             " values('" + nick + "', '" + contra + "', '" + nombre_1 + "', '" + nombre_2 + "'," +
                             " '" + apellido_1 + "', '" + apellido_2 + "', " + edad + ", '" + correo + "', '" + rol + "');";
+            bool respuesta = false;
             try
             {
                 if (!VerificarRegistro(nick))
                 {
+                    
                     conectionString();
                     con.Open();
                     com.Connection = con;
@@ -180,16 +183,21 @@ namespace App_Estudios_G7.Controllers
                     //ViewBag.Consulta = "Usuario ingresado exitosamente.";
 
                     con.Close();
+                    respuesta= true;
                 }
-                else //ViewBag.Consulta = "El nickname ya existe";
+
+                else
+                { //ViewBag.Consulta = "El nickname ya existe";
                     Console.WriteLine("El nickname ya existe");
+                    respuesta= false;
+                }
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al insertar el usuario: ", ex);
+                respuesta= false;
             }
 
-            return "Correcto";
+            return respuesta;
         }
     }
 }

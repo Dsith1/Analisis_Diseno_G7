@@ -10,28 +10,37 @@ namespace TestStack.BDDfy.Samples
         AsA = "User Needs To Have Access To Platform",
         IWant = "I want to register my account",
         SoThat = "So that I enter my correct information for an account")]
-    public class BDDfy_Rocks
+    public class RegistroTestBDD2
     {
         
-        USUARIOsController usuario = new USUARIOsController();
-        ViewResult result;
-        USUARIO user;
-        void GivenIEnterMyInformationForRegistry()
-        {
-            user = new USUARIO()
-            { nick = "test12", contra = "123", nombre_1 = "juan", nombre_2 = "juan", apellido_1 = "perez", apellido_2 = "perez", edad = 15, correo = "algo@algo", rol = "normal" };
+        bool respuesta=true;
+        CuentaController cuenta = new CuentaController();
+        string nick, contra, nombre_1, nombre_2;
+        string apellido_1, apellido_2,edad,correo,rol;
 
+        void GivenIEnterMyInformationForRegister()
+        {
+            nick = "test124";
+            contra = "1234";
+            nombre_1 = "Juan";
+            nombre_2 = "Jose";
+            apellido_1 = "Gonzales";
+            apellido_2 = "Perez";
+            edad = "21";
+            correo = "jose@gmail.com";
+            rol = "normal";
         }
 
         void WhenIPressRegisterButton()
         {
-            
-            result = usuario.Create(user) as ViewResult;
+           
+            respuesta=cuenta.PruebaRegistrarse(nick,contra,nombre_1,nombre_2,apellido_1,apellido_2,edad,correo,rol);
+
         }
 
-        void ThenUserMustBeRegisteredWhitViewReturn()
+        void ThenUserMustBeRegisteredReturnTrue()
         {
-            Assert.NotNull(result);
+            Assert.True(respuesta);
         }
 
 
@@ -44,9 +53,9 @@ namespace TestStack.BDDfy.Samples
         [Fact]
         public void BDDfy_with_fluent_API()
         {
-            this.Given(_ => GivenIEnterMyInformationForRegistry())
+            this.Given(_ => GivenIEnterMyInformationForRegister())
                 .When(_ => WhenIPressRegisterButton())
-                .Then(_ => ThenUserMustBeRegisteredWhitViewReturn())
+                .Then(_ => ThenUserMustBeRegisteredReturnTrue())
                 .BDDfy();
         }
     }
