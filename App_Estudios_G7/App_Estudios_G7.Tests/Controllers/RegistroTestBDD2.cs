@@ -4,7 +4,7 @@ using App_Estudios_G7.Models;
 using App_Estudios_G7.Controllers;
 using System.Web.Mvc;
 
-namespace TestStack.BDDfy.Samples
+namespace TestStack.BDDfy
 {
     [Story(
         AsA = "User Needs To Have Access To Platform",
@@ -20,7 +20,7 @@ namespace TestStack.BDDfy.Samples
 
         void GivenIEnterMyInformationForRegister()
         {
-            nick = "test124";
+            nick = "test102";
             contra = "1234";
             nombre_1 = "Juan";
             nombre_2 = "Jose";
@@ -50,6 +50,7 @@ namespace TestStack.BDDfy.Samples
             this.BDDfy();
         }
 
+        /*
         [Fact]
         public void BDDfy_with_fluent_API()
         {
@@ -58,5 +59,6 @@ namespace TestStack.BDDfy.Samples
                 .Then(_ => ThenUserMustBeRegisteredReturnTrue())
                 .BDDfy();
         }
+        */
     }
 }
