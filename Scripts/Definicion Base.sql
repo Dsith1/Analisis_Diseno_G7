@@ -13,8 +13,7 @@ Create Table USUARIO(
 	apellido_2 varchar(20) not null,
 	edad int not null,
 	correo	varchar(20) not null,
-	rol varchar(20) not null,
-
+	rol varchar(20) not null
 );
 
 Create Table CURSO(

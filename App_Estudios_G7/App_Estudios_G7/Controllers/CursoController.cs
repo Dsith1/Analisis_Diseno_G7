@@ -13,6 +13,9 @@ namespace App_Estudios_G7.Controllers
     public class CursoController : Controller
     {
         Sistema_estudiosEntities BD = new Sistema_estudiosEntities();
+        SqlConnection con = new SqlConnection();
+        SqlCommand com = new SqlCommand();
+        SqlDataReader dr;
 
         /**
          * Metodo que da una lista al view para desplegar todos los cursos, unicamente visible para el admin
@@ -53,6 +56,10 @@ namespace App_Estudios_G7.Controllers
         [HttpPost]
         public ActionResult CrearCurso(CURSO model)
         {
+            string rol = Session["Rol"].ToString();// variable seteada en el login
+            if(rol != null && rol.Equals("Maestro") == false)
+                return Redirect("/Curso/CursoIndex");
+
             try
             {
                 if (ModelState.IsValid)
@@ -73,9 +80,37 @@ namespace App_Estudios_G7.Controllers
                 throw new Exception(ex.Message);
             }
 
-
             ViewBag.creador = new SelectList(BD.USUARIOs, "id_usuario", "nick", model.creador);
             return View(model);
+        }
+
+        //METODO PARA PRUEBA DE BDD
+        //autor: ID DEL USUARIO
+        public string PruebaCrearCurso(string nombre, int autor)
+        {
+            string query = "INSERT INTO curso(nombre,creador)" +
+                            " values('" + nombre + "', '" + autor + "');";
+            try
+            {
+                conectionString();
+                con.Open();
+                com.Connection = con;
+                com.CommandText = query;
+                dr = com.ExecuteReader();
+
+                Console.WriteLine("Curso Creado Exitosamente");
+                //ViewBag.Consulta = "Usuario ingresado exitosamente.";
+                con.Close();
+                return "Correcto";
+                                
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Curso Erroneo");
+                return "Incorrecto";
+            }
+
+            //return "Correcto";
         }
 
         /**
@@ -206,6 +241,10 @@ namespace App_Estudios_G7.Controllers
          public ActionResult CrearActividad()
         {
             return View();
+        }
+        void conectionString()
+        {
+            con.ConnectionString = "data source=SERGIO\\SERGIO; database=Sistema_estudios; integrated security = true;";
         }
 
     }
