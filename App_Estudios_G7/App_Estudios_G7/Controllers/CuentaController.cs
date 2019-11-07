@@ -199,5 +199,80 @@ namespace App_Estudios_G7.Controllers
 
             return respuesta;
         }
+
+        //PRUEBA INICIAR SESION
+        public string PruebaInicarSesion(string usuario, string contraseña, string rol)
+        {
+            if (rol.Equals("Administrador"))
+            {
+                string query = "select * from USUARIO where nick='" + usuario + "' and contra='" + contraseña + "' and rol ='" + rol + "'";
+                try
+                {
+                    conectionString();
+                    con.Open();
+                    com.Connection = con;
+                    com.CommandText = query;
+                    dr = com.ExecuteReader();
+
+                    Console.WriteLine("Inicio de Sesion Exitosamente");
+                    //ViewBag.Consulta = "Usuario ingresado exitosamente.";
+                    con.Close();
+                    return "Correcto";
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Inicio de Sesion Erroneo");
+                    return "Incorrecto";
+                }
+            }
+            else if (rol.Equals("Maestro"))
+            {
+                string query = "select * from USUARIO where nick='" + usuario + "' and contra='" + contraseña + "' and rol ='" + rol + "'";
+                try
+                {
+                    conectionString();
+                    con.Open();
+                    com.Connection = con;
+                    com.CommandText = query;
+                    dr = com.ExecuteReader();
+
+                    Console.WriteLine("Inicio de Sesion Exitosamente");
+                    //ViewBag.Consulta = "Usuario ingresado exitosamente.";
+                    con.Close();
+                    return "Correcto";
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Inicio de Sesion Erroneo");
+                    return "Incorrecto";
+                }
+            }
+            else if (rol.Equals("Estudiante"))
+            {
+                string query = "select * from USUARIO where nick='" + usuario + "' and contra='" + contraseña + "' and rol ='" + rol + "'";
+                try
+                {
+                    conectionString();
+                    con.Open();
+                    com.Connection = con;
+                    com.CommandText = query;
+                    dr = com.ExecuteReader();
+
+                    Console.WriteLine("Inicio de Sesion Exitosamente");
+                    //ViewBag.Consulta = "Usuario ingresado exitosamente.";
+                    con.Close();
+                    return "Correcto";
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Inicio de Sesion Erroneo");
+                    return "Incorrecto";
+                }
+            }
+           
+        }
     }
 }
