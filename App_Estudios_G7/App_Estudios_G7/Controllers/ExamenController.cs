@@ -43,6 +43,10 @@ namespace App_Estudios_G7.Controllers
         // GET: /Examen/Create
         public ActionResult Create()
         {
+            string rol = Session["Rol"].ToString();// variable seteada en el login
+            if (rol != null && rol.Equals("Maestro") == false)
+                return Redirect("PaginaError");
+
             ViewBag.curso = new SelectList(db.CURSOes, "id_curso", "nombre");
             return View();
         }
@@ -75,6 +79,10 @@ namespace App_Estudios_G7.Controllers
         // GET: /Examen/Edit/5
         public ActionResult Edit(int? id)
         {
+            string rol = Session["Rol"].ToString();// variable seteada en el login
+            if (rol != null && rol.Equals("Maestro") == false)
+                return Redirect("PaginaError");
+
             if (id == null || id < 1)
             {
                 ViewBag.MensajeError = "Verifique los datos del elemento";
@@ -112,6 +120,10 @@ namespace App_Estudios_G7.Controllers
         // GET: /Examen/Delete/5
         public ActionResult Delete(int? id)
         {
+            string rol = Session["Rol"].ToString();// variable seteada en el login
+            if (rol != null && rol.Equals("Maestro") == false)
+                return Redirect("PaginaError");
+
             if (id == null || id < 1)
             {
                 ViewBag.MensajeError = "Verifique los datos del elemento";
@@ -132,7 +144,6 @@ namespace App_Estudios_G7.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-
             EXAMan examan = db.EXAMEN.Find(id);
             db.EXAMEN.Remove(examan);
             db.SaveChanges();
