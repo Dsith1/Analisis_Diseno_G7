@@ -18,6 +18,11 @@ namespace App_Estudios_G7.Controllers
 
         // pagina principal donde estan todas las tareas que el usuario ha creado
         // GET: Tarea
+        void conectionString()
+        {
+            con.ConnectionString = "data source=SERGIO\\SERGIO; database=Sistema_estudios; integrated security = true;";
+        }
+
         public ActionResult TareaIndex()
         {
             var tAREAs = db.TAREAs.Include(t => t.CURSO1);
@@ -177,5 +182,33 @@ namespace App_Estudios_G7.Controllers
             }
             base.Dispose(disposing);
         }
+
+        //METODO PARA REALIZAR PRUEBAS
+        public string PruebaCrearTarea(string enunciado, string entrega, string curso, double ponderacion)
+        {
+            string query = "INSERT INTO TAREA(Enunciado,Entrega,curso,ponderacion)" +
+                            " values('" + enunciado + "', '" + entrega + "', '" + curso + "', '" + ponderacion + "');";
+            try
+            {
+                conectionString();
+                con.Open();
+                com.Connection = con;
+                com.CommandText = query;
+                dr = com.ExecuteReader();
+
+                Console.WriteLine("TAREA Creada Exitosamente");
+                //ViewBag.Consulta = "Usuario ingresado exitosamente.";
+                con.Close();
+                return "Correcto";
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Tarea Erroneo");
+                return "Incorrecto";
+            }
+
+        }
+
     }
 }
