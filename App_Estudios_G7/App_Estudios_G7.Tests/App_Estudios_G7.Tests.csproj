@@ -161,6 +161,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\BDD\BDDCrearCurso.cs" />
+    <Compile Include="Controllers\BDD\BDDLogin.cs" />
     <Compile Include="Controllers\CursoControllerTest.cs" />
     <Compile Include="Controllers\ExamenControllerTest.cs" />
     <Compile Include="Controllers\RegistrarseControllerTest.cs" />
