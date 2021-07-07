@@ -145,6 +145,7 @@
     <Compile Include="Controllers\CursoControllerTest.cs" />
     <Compile Include="Controllers\ExamenControllerTest.cs" />
     <Compile Include="Controllers\RegistrarseControllerTest.cs" />
+    <Compile Include="Controllers\AsignacionControllerTest.cs" />
     <Compile Include="Controllers\TareaControllerTest.cs" />
     <Compile Include="Controllers\PublicacionControllerTest.cs" />
     <Compile Include="Controllers\UsuariosControllerTest.cs" />

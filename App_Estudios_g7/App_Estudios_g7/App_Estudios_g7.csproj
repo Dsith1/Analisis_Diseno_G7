@@ -158,6 +158,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AsignacionController.cs" />
     <Compile Include="Controllers\CargaArchivo.cs" />
     <Compile Include="Controllers\CursoController.cs" />
     <Compile Include="Controllers\CuentaController.cs" />
@@ -346,6 +347,7 @@
     <Content Include="Views\Examen\PaginaError.cshtml" />
     <Content Include="Views\Cuenta\Registrarse.cshtml" />
     <Content Include="Views\_LayoutPage2.cshtml" />
+    <Content Include="Views\Asignacion\AsignacionCursos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
